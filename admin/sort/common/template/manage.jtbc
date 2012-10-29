@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">{$=mm_get_admin_sellng()}
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.fsort','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="?sgenre={$=#sgenre}" class="green">{$=ii_itake('manage.all','lng')}</a></td>
+                    </tr>
+                    </tr>{@recurrence_ida}
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="{$href}" class="red">{$topic}</a></td>
+                    </tr>{@recurrence_ida}
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="?sgenre={$=#sgenre}">{$=ii_itake('manage.all','lng')}</a>{$nav_sort}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.sort','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form method="post" name="sel_form" action="?action=control&sgenre={$=#sgenre}&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}" onSubmit="get_sel_id()">
+                  <input type="hidden" name="sel_ids">
+                    <tr>
+                      <td width="30" height="25" class="ash" align="center">ID</td>
+                      <td width="30"><input type="checkbox" name="sel_all" class="checkbox" onClick="select_all()"></td>
+                      <td width="*">{$=ii_itake('manage.name','lng')}</td>
+                      <td align="center" width="50">{$=ii_itake('global.lng_config.edit','lng')}</td>
+                      <td align="center" width="50">{$=ii_itake('global.lng_config.delete','lng')}</td>
+                      <td align="center" width="50"><a href="?action=reset&sgenre={$=#sgenre}&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}" onclick="return click_return('{$=ii_itake('manage.reset_sure', 'lng')}')">{$=ii_itake('global.lng_config.order','lng')}</a></td>
+                    </tr>{@recurrence_idb}
+                    <tr>
+                      <td height="25" class="ash" align="center">{$id}</td>
+                      <td><input type="checkbox" name="sel_id" value="{$id}" class="checkbox"></td>
+                      <td><a href="?sgenre={$=#sgenre}&id={$id}">{$sort}</a></td>
+                      <td align="center"><a href="?sgenre={$=#sgenre}&type=edit&id={$id}"><img src="{$=#global_images_route}public/small/edit.gif" border="0"></a></td>
+                      <td align="center"><a href="?action=delete&sgenre={$=#sgenre}&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}" onclick="return click_return('{$sortstr}')"><img src="{$=#global_images_route}public/small/delete.gif" border="0"></a></td>
+                      <td align="center"><a href="?action=order&at=up&sgenre={$=#sgenre}&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}"><img src="{$=#global_images_route}public/small/up.gif" border="0"></a>&nbsp;<a href="?action=order&at=down&sgenre={$=#sgenre}&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}"><img src="{$=#global_images_route}public/small/down.gif" border="0"></a></td>
+                    </tr>{@recurrence_idb}
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="25" align="right">{$cpagestr}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25" align="right">{$=ii_itake('global.lng_admin.admin_control','lng')} <select name="control" class="select">{$=mm_sel_control()}</select> <input type="submit" name="submit" value="{$=ii_itake('global.lng_config.control','lng')}" class="button" onclick="return click_return('{$=ii_itake('global.lng_admin.admin_confirm','lng')}')"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </form>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.add','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form method="post" name="sform" action="?action=add&sgenre={$=#sgenre}&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}">
+                    <tr>
+                      <td width="100%" height="25">{$=ii_itake('manage.name','lng')}&nbsp;<input type="text" name="sort" size="20">&nbsp;<input type="submit" name="submit" value="{$=ii_itake('manage.add_submit','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[edit]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+    <table border="0" width="98%" cellSpacing="0" cellPadding="0" class="lrbtline">
+      <tr>
+        <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.nav','lng')}</td>
+      </tr>
+      <tr>
+        <td width="100%" align="center">
+          <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+            <tr>
+              <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="?sgenre={$=#sgenre}">{$=ii_itake('manage.all','lng')}</a>{$nav_sort}</td>
+            </tr>
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+      <tr>
+        <td width="100%" height="5"></td>
+      </tr>
+    </table>
+    <table border="0" width="98%" cellSpacing="0" cellPadding="0" class="lrbtline">
+      <tr>
+        <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.edit','lng')}</td>
+      </tr>
+      <tr>
+        <td width="100%" align="center">
+          <table border="0" width="98%" cellspacing="0" cellPadding="0">
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+            <form name="eform" method="post" action="?action=edit&sgenre={$=#sgenre}&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}">
+            <tr>
+              <td width="100%" height="25">{$=ii_itake('manage.name','lng')}&nbsp;<input type="text" name="sort" size="20" value="{$sort}">&nbsp;<input type="submit" name="submit" value="{$=ii_itake('manage.edit_submit','lng')}" class="button"></td>
+            </tr>
+            </form>
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

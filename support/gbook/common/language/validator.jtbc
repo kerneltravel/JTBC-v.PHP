@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[author]]></disinfo>
+      <chinese><![CDATA[留言者名称必须在1-5之间]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[email]]></disinfo>
+      <chinese><![CDATA[错误的邮件格式]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[homepage]]></disinfo>
+      <chinese><![CDATA[错误的个人主页格式]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[topic]]></disinfo>
+      <chinese><![CDATA[留言标题不能为空]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[content]]></disinfo>
+      <chinese><![CDATA[留言内容不能为空并且少于1000字]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[valcode]]></disinfo>
+      <chinese><![CDATA[验证码不能为空]]></chinese>
+    </item>
+  </language_list>
+</xml>

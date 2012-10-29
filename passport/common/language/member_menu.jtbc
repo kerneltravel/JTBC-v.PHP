@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[{$=ii_get_actual_route(USER_FOLDER)}/?type=manage&mtype=userinfo]]></disinfo>
+      <chinese><![CDATA[我的信息]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[{$=ii_get_actual_route(USER_FOLDER)}/?type=manage&mtype=information]]></disinfo>
+      <chinese><![CDATA[资料修改]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[{$=ii_get_actual_route(USER_FOLDER)}/?type=manage&mtype=password]]></disinfo>
+      <chinese><![CDATA[密码修改]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[{$=ii_get_actual_route(USER_FOLDER)}/?type=manage&mtype=userset]]></disinfo>
+      <chinese><![CDATA[个人设置]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[{$=ii_get_actual_route(USER_FOLDER)}/message/?type=list]]></disinfo>
+      <chinese><![CDATA[我的短信]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[{$=ii_get_actual_route(USER_FOLDER)}/friend/?type=list]]></disinfo>
+      <chinese><![CDATA[我的好友]]></chinese>
+    </item>
+  </language_list>
+</xml>

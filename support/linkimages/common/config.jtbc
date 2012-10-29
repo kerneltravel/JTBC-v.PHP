@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfg" author="jetiben">
+  <configure>
+    <item varstr="npagesize" strvalue="20" />
+    <item varstr="nuppath" strvalue="common/upload/" />
+    <item varstr="nuptype" strvalue=".bmp.jpg.gif.png" />
+    <item varstr="ndatabase" strvalue="jtbc_support_linkimages" />
+    <item varstr="nidfield" strvalue="lid" />
+    <item varstr="nfpre" strvalue="l_" />
+    <item varstr="nuninstall" strvalue="1|0|1" />
+  </configure>
+</xml>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[base]]></name>
+      <tpl_default><![CDATA[<base id="base" href="{$=ii_get_lrstr($GLOBALS['nurlpre'] . $GLOBALS['nuri'], '/', 'leftr')}/" />]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[default_head]]></name>
+      <tpl_default><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{$=mm_web_base()}<meta http-equiv="x-ua-compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset={$=CHARSET}" />
+<meta name="keywords" content="{$=ii_itake('global.module.keywords', 'lng')}" />
+<meta name="description" content="{$=ii_itake('global.module.description', 'lng')}" />
+<title>{$=mm_web_title($GLOBALS['ntitle'])}</title>
+<script type="text/javascript" src="{$=#global_images_route}js/main.js"></script>
+<script type="text/javascript" src="{$=#global_images_route}js/writeflashhtml2.js"></script>
+<link type="text/css" rel="stylesheet" href="{$=#global_images_route}theme/{$=#nskin}/layout.css" />
+</head>
+<body>
+<div id="top">
+  <div id="topContent">
+    <h2><a href="{$=ii_get_actual_route("./")}">{$=ii_itake('global.module.web_title', 'lng')}</a></h2>
+    <div id="panel"><span class="hand" onclick="this.style.behavior='url(#default#homepage)'; this.sethomepage(document.location); return false;">{$=ii_itake('global.module.set_homepage', 'lng')}</span>&nbsp;&nbsp;<span class="hand" onclick="window.external.addfavorite (document.location,document.title); return false;">{$=ii_itake('global.module.add_favorite', 'lng')}</span></div>
+    <div id="menu">
+      <ul>
+        <li><a href="{$=ii_get_actual_route('./')}">{$=ii_itake('global.lng_menu.homepage', 'lng')}</a></li>
+        <li><a href="{$=ii_get_actual_route('article')}">{$=ii_itake('global.lng_menu.article', 'lng')}</a></li>
+        <li><a href="{$=ii_get_actual_route('product')}">{$=ii_itake('global.lng_menu.product', 'lng')}</a></li>
+        <li><a href="{$=ii_get_actual_route('download')}">{$=ii_itake('global.lng_menu.download', 'lng')}</a></li>
+        <li><a href="{$=ii_get_actual_route('shop')}">{$=ii_itake('global.lng_menu.shop', 'lng')}</a></li>
+        <li><a href="{$=ii_get_actual_route('forum')}">{$=ii_itake('global.lng_menu.forum', 'lng')}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[default_foot]]></name>
+      <tpl_default><![CDATA[<div id="bottom">
+  <div id="bottomContent">
+    <p>Copyright 2004-{$=date('Y', ii_mktime(ii_now()))} JTBC(<a href="http://www.jtbc.net.cn/" target="_blank">CMS</a>) <a href="http://www.jetiben.com/" target="_blank">Jetiben.Com</a> All Rights Reserved.</p>
+    <div id="bottomMenu">{$=vv_itransfer('new', 'm1', 'topx=10;tnum=30;genre=aboutus;osql= and ab_lng=\'' . $GLOBALS['nlng'] . '\'')}<a href="{$=ii_get_actual_route('support')}/gbook/" target="_self">{$=ii_itake('global.lng_menu.gbook', 'lng')}</a></div>
+  </div>
+</div>
+</body>
+</html>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[chead]]></name>
+      <tpl_default><![CDATA[<html>
+<head>
+<meta http-equiv="x-ua-compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset={$=CHARSET}">
+<link type="text/css" rel="stylesheet" href="{$=#global_images_route}theme/{$=#nskin}/layout.css" />
+<title>{$=mm_web_title($GLOBALS['ntitle'])}</title>
+<script language="javascript" src="{$=#global_images_route}js/main.js"></script>
+</head>
+<body>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[cfoot]]></name>
+      <tpl_default><![CDATA[</body>
+</html>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[clear_head]]></name>
+      <tpl_default><![CDATA[<html>
+<head>
+<meta http-equiv="x-ua-compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset={$=CHARSET}">
+<meta http-equiv="pragma" content="no-cache">
+<style>
+body {margin-left: 0px; margin-top: 2px; margin-right: 0px; margin-bottom: 0px; font-size:12px;}
+input {border:1px solid #c0c0c0; padding: 1px; height: 20px;}
+h1 {padding-left: 5px;color:red;}
+</style>
+<title></title>
+<script language="javascript" src="{$=#global_images_route}js/main.js"></script>
+<script language="javascript" src="{$=#global_images_route}js/selects.js"></script>
+</head>
+<body>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[clear_foot]]></name>
+      <tpl_default><![CDATA[</body>
+</html>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[admin_head]]></name>
+      <tpl_default><![CDATA[<html>
+<head>
+<meta http-equiv="x-ua-compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset={$=CHARSET}" />
+<link href="{$=ii_get_actual_route(ADMIN_FOLDER . '/common/images/default.css')}" type="text/css" rel="stylesheet" />
+<title>{$=mm_web_title($GLOBALS['ntitle'])}</title>
+<script language="javascript" src="{$=#global_images_route}js/main.js"></script>
+<script language="javascript" src="{$=#global_images_route}js/selects.js"></script>
+<script language="javascript" src="{$=#global_images_route}js/manage.js"></script>
+</head>
+<body onload="nhrefstate()">]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[admin_foot]]></name>
+      <tpl_default><![CDATA[</body>
+</html>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

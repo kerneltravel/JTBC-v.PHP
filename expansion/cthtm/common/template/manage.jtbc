@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[
+<script language="javascript">
+var ct_error_count = 0;
+var ct_sort_i, ct_sort_arys;
+var ct_sort_list_i, ct_sort_list_last;
+var ct_detail_sort, ct_detail_sort_child, ct_detail_isupdate;
+var ct_detail_id_min, ct_detail_id_max;
+var ct_detail_id_i, ct_detail_page_i;
+
+function ncontinue_try_it(strers)
+{
+  get_id("continue_try_it").style.visibility = "hidden";
+  ct_error_count = 0;
+  var t_timeout = (ct_error_count + 2) * {$=#JS_timeout};
+  get_id("noticestr").innerHTML = t_timeout + "{$=ii_itake('info.try_create_it', 'lng')}";
+  switch (strers)
+  {
+    case "list":
+      setTimeout("nload_ct_sort_pages()", t_timeout);
+      break;
+    case "detail":
+      setTimeout("nload_ct_detail_pages()", t_timeout);
+      break;
+  }
+}
+
+function ntry_create_it(strers)
+{
+  ct_error_count = ct_error_count + 1;
+  if (ct_error_count <= 10)
+  {
+    var t_timeout = (ct_error_count + 2) * {$=#JS_timeout};
+    get_id("noticestr").innerHTML = t_timeout + "{$=ii_itake('info.try_create_it', 'lng')}";
+    switch (strers)
+    {
+      case "list":
+        setTimeout("nload_ct_sort_pages()", t_timeout);
+        break;
+      case "detail":
+        setTimeout("nload_ct_detail_pages()", t_timeout);
+        break;
+    }
+  }
+  else
+  {
+    get_id("noticestr").innerHTML = "{$=ii_itake('info.error_count_max', 'lng')}";
+    get_id("continue_try_it").style.visibility = "visible";
+  }
+}
+
+function nchange_ct_type(strers)
+{
+  if (strers == "$invalid$") get_id("controlstr").innerHTML = "{$=ii_itake('info.module_invalid', 'lng')}";
+  else
+  {
+    if (!(strers == "$error$")) get_id("controlstr").innerHTML = strers;
+    else get_id("controlstr").innerHTML = "{$=ii_itake('info.connection_error', 'lng')}";
+  }
+}
+
+function change_ct_type(strers)
+{
+  var tmodule = get_id("module").value;
+  if (tmodule == "")
+  {
+    alert("{$=ii_itake('info.module_null', 'lng')}");
+  }
+  else
+  {
+    get_id("controlstr").innerHTML = "Loading.."
+    igets("interface.php?module=" + tmodule + "&type=get&mtype=" + strers, nchange_ct_type);
+  }
+}
+
+function ncreate_ct_sort_pages(strers)
+{
+  if (strers == "$invalid$") get_id("noticestr").innerHTML = "{$=ii_itake('info.module_invalid', 'lng')}";
+  else
+  {
+    switch (strers)
+    {
+      case "$error$":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.connection_error', 'lng')}";
+        setTimeout("ntry_create_it('list')", {$=#JS_timeout});
+        break;
+      case "":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.create_failed', 'lng')}";
+        break;
+      default:
+        ct_error_count = 0;
+        get_id("noticestr").innerHTML = strers;
+        ct_sort_list_i = ct_sort_list_i + 1;
+        if (ct_sort_list_i > ct_sort_list_last)
+        {
+          ct_sort_i = ct_sort_i + 1
+          if (ct_sort_i < ct_sort_arys.length) setTimeout("nload_sort_list()", {$=#JS_timeout});
+          else get_id("noticestr").innerHTML = "{$=ii_itake('info.succeed', 'lng')}";
+        }
+        else
+        {
+          setTimeout("nload_ct_sort_pages()", {$=#JS_timeout});
+        }
+        break;
+    }
+  }
+}
+
+function nload_ct_sort_pages()
+{
+  var tmodule = get_id("module").value;
+  if (tmodule == "")
+  {
+    alert("{$=ii_itake('info.module_null', 'lng')}");
+  }
+  else
+  {
+    get_id("noticestr").innerHTML = "{$=ii_itake('info.creating', 'lng')}";
+    igets("interface.php?module=" + tmodule + "&type=create&mtype=list&classid=" + ct_sort_arys[ct_sort_i] + "&page=" + ct_sort_list_i, ncreate_ct_sort_pages);
+  }
+}
+
+function nload_sort_lists(strers)
+{
+  if (strers == "$invalid$") get_id("noticestr").innerHTML = "{$=ii_itake('info.module_invalid', 'lng')}";
+  else
+  {
+    switch (strers)
+    {
+      case "$error$":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.connection_error', 'lng')}";
+        break;
+      case "":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.loadsortlist_error', 'lng')}";
+        break;
+      default:
+        ct_sort_list_i = 1;
+        ct_sort_list_last = get_num(strers);
+        setTimeout("nload_ct_sort_pages()", {$=#JS_timeout});
+        break;
+    }
+  }
+}
+
+function nload_sort_list()
+{
+  var tmodule = get_id("module").value;
+  if (tmodule == "")
+  {
+    alert("{$=ii_itake('info.module_null', 'lng')}");
+  }
+  else
+  {
+    get_id("noticestr").innerHTML = "{$=ii_itake('info.sort_list_loading', 'lng')}" + ct_sort_arys[ct_sort_i];
+    igets("interface.php?module=" + tmodule + "&type=loadsortlists&classid=" + ct_sort_arys[ct_sort_i], nload_sort_lists);
+  }
+}
+
+function nload_sort(strers)
+{
+  if (strers == "$invalid$") get_id("noticestr").innerHTML = "{$=ii_itake('info.module_invalid', 'lng')}";
+  else
+  {
+    switch (strers)
+    {
+      case "$error$":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.connection_error', 'lng')}";
+        break;
+      case "":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.loadsort_error', 'lng')}";
+        break;
+      default:
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.loadsort_succeed', 'lng')}";
+        ct_sort_i = 0;
+        ct_sort_arys = strers.split(",");
+        nload_sort_list();
+        break;
+    }
+  }
+}
+
+function ncreate_ct_detail_pages(strers)
+{
+  if (strers == "$invalid$") get_id("noticestr").innerHTML = "{$=ii_itake('info.module_invalid', 'lng')}";
+  else
+  {
+    switch (strers)
+    {
+      case "$error$":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.connection_error', 'lng')}";
+        setTimeout("ntry_create_it('detail')", {$=#JS_timeout});
+        break;
+      case "":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.create_failed', 'lng')}";
+        break;
+      default:
+        ct_error_count = 0;
+        var tarys = strers.split("|")
+        if (tarys.length == 3)
+        {
+          get_id("noticestr").innerHTML = tarys[0];
+          ct_detail_id_i = get_num(tarys[1]);
+          ct_detail_page_i = get_num(tarys[2]);
+          if (ct_detail_id_i == 0 || ct_detail_id_i > ct_detail_id_max) get_id("noticestr").innerHTML = "{$=ii_itake('info.succeed', 'lng')}";
+          else setTimeout("nload_ct_detail_pages()", {$=#JS_timeout});
+        }
+        break;
+    }
+  }
+}
+
+function nload_ct_detail_pages()
+{
+  var tmodule = get_id("module").value;
+  if (tmodule == "")
+  {
+    alert("{$=ii_itake('info.module_null', 'lng')}");
+  }
+  else
+  {
+    get_id("noticestr").innerHTML = "(ID:" + ct_detail_id_i + "){$=ii_itake('info.creating', 'lng')}";
+    igets("interface.php?module=" + tmodule + "&type=create&mtype=detail&id=" + ct_detail_id_i + "&page=" + ct_detail_page_i, ncreate_ct_detail_pages);
+  }
+}
+
+function ncreate_ct_page(strers)
+{
+  if (strers == "$invalid$") get_id("noticestr").innerHTML = "{$=ii_itake('info.module_invalid', 'lng')}";
+  else
+  {
+    switch (strers)
+    {
+      case "$error$":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.connection_error', 'lng')}";
+        break;
+      case "":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.create_failed', 'lng')}";
+        break;
+      default:
+        get_id("noticestr").innerHTML = strers;
+        break;
+    }
+  }
+}
+
+function create_ct_page(strers)
+{
+  var tmodule = get_id("module").value;
+  if (tmodule == "")
+  {
+    alert("{$=ii_itake('info.module_null', 'lng')}");
+  }
+  else
+  {
+    switch (strers)
+    {
+      case "index":
+        var tindex_filename = get_id("index_filename").value;
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.creating', 'lng')}";
+        igets("interface.php?module=" + tmodule + "&type=create&mtype=" + strers + "&index_filename=" + tindex_filename, ncreate_ct_page);
+        break;
+      case "list":
+        var tsort = get_id("sort").value;
+        var tsort_child = 0;
+        if (get_id("sort_child").checked) tsort_child = 1;
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.sort_loading', 'lng')}";
+        igets("interface.php?module=" + tmodule + "&type=loadsort&sort=" + tsort + "&sort_child=" + tsort_child, nload_sort);
+        break;
+      case "detail":
+        ct_detail_sort = get_id("sort").value;
+        ct_detail_sort_child = 0;
+        if (get_id("sort_child").checked) ct_detail_sort_child = 1;
+        ct_detail_isupdate = 0;
+        if (get_id("isupdate").checked) ct_detail_isupdate = 1;
+        ct_detail_id_min = get_id("id_min").value;
+        ct_detail_id_max = get_id("id_max").value;
+        ct_detail_id_i = ct_detail_id_min;
+        ct_detail_page_i = 0;
+        nload_ct_detail_pages();
+    }
+  }
+}
+
+function nget_id_min_max(strers)
+{
+  if (strers == "$invalid$") get_id("noticestr").innerHTML = "{$=ii_itake('info.module_invalid', 'lng')}";
+  else
+  {
+    switch (strers)
+    {
+      case "$error$":
+        get_id("noticestr").innerHTML = "{$=ii_itake('info.connection_error', 'lng')}";
+        break;
+      default:
+        var tarys = strers.split(",");
+        if (tarys.length == 2)
+        {
+          get_id("noticestr").innerHTML = "{$=ii_itake('info.id_min_max_succeed', 'lng')}";
+          get_id("id_min").value = tarys[0];
+          get_id("id_max").value = tarys[1];
+        }
+        else get_id("noticestr").innerHTML = "{$=ii_itake('info.id_min_max_failed', 'lng')}";
+        break;
+    }
+  }
+}
+
+function get_id_min_max()
+{
+  var tmodule = get_id("module").value;
+  if (tmodule == "")
+  {
+    alert("{$=ii_itake('info.module_null', 'lng')}");
+  }
+  else
+  {
+    var tsort = get_id("sort").value;
+    var tsort_child = 0;
+    if (get_id("sort_child").checked) tsort_child = 1;
+    var tisupdate = 0;
+    if (get_id("isupdate").checked) tisupdate = 1;
+    get_id("noticestr").innerHTML = "{$=ii_itake('info.id_min_max_loading', 'lng')}";
+    igets("interface.php?module=" + tmodule + "&type=loadidminmax&sort=" + tsort + "&sort_child=" + tsort_child + "&isupdate=" + tisupdate, nget_id_min_max)
+  }
+}
+</script>
+<table border="0" width="100%" cellSpacing="0" cellpadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_config.control','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="javascript:change_ct_type('index');">{$=ii_itake("config.ct_index", "lng")}</a></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="javascript:change_ct_type('list');">{$=ii_itake("config.ct_list", "lng")}</a></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="javascript:change_ct_type('detail');">{$=ii_itake("config.ct_detail", "lng")}</a></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('config.notice','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="100%" height="25" class="red" id="noticestr">{$=ii_itake('config.noticestr','lng')}</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('config.create','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('config.module','lng')}</td>
+                      <td width="*"><input type="text" name="module" id="module" size="10" value="{$=ii_htmlencode($_POST['genre'])}"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="100%" id="controlstr"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfg" author="jetiben">
+  <configure>
+    <item varstr="npagesize" strvalue="20" />
+    <item varstr="nlisttopx" strvalue="2000" />
+    <item varstr="ndatabase" strvalue="jtbc_support_review" />
+    <item varstr="nidfield" strvalue="rid" />
+    <item varstr="nfpre" strvalue="r_" />
+    <item varstr="nuninstall" strvalue="1|0|0" />
+    <item varstr="timeout" strvalue="2" />
+  </configure>
+</xml>

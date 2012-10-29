@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[data_member_side]]></name>
+      <tpl_default><![CDATA[<div class="box1">
+  <h3>{$=ii_itake('global.' . USER_FOLDER . ':member.topic','lng')}</h3>
+  <ul>{@recurrence_ida}
+    <li><a href="{$href}">{$explain}</a></li>{@recurrence_ida}
+  </ul>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[premise]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('module.read','lng')}</h3>
+        <div class="box1s">
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td height="25" align="left"><img src="{$=#images_route}small/icon_list.gif" border="0" />&nbsp;{$=ii_itake('module.process','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_a','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_b','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_c','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_d','lng')}</td>
+            </tr>
+            <tr>
+              <td height="5"></td>
+            </tr>
+            <tr>
+              <td height="25" align="left"><img src="{$=#images_route}small/icon_list.gif" border="0" />&nbsp;{$=ii_itake('module.notice','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.notice_a','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.notice_b','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.notice_c','lng')}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('module.mread','lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <form method="post" action="?action=register">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td height="10"></td>
+                </tr>
+                <tr>
+                  <td>{$=ii_encode_article(ii_itake('module.treaty','lng'))}</td>
+                </tr>
+                <tr>
+                  <td height="10"></td>
+                </tr>
+                <tr>
+                  <td height="35" align="center"><input type="button" name="agree" value="{$=ii_itake('module.agree','lng')}" class="button" onclick="location.href='?type=register'"> <input type="button" name="oppose" value="{$=ii_itake('module.oppose','lng')}" class="button" onclick="self.close()"></td>
+                </tr>
+                <tr>
+                  <td height="10"></td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[register]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+{$=mm_echo_error()}
+<script type="text/javascript" src="{$=#global_images_route}js/validator.js"></script>
+<script type="text/javascript">
+function jscheck_usernames(strers)
+{
+  var tstrers = strers;
+  get_id("trck_username").style.display = "";
+  var check_username_str_0 = "{$=ii_itake('validator.check_username_0', 'lng')}"
+  var check_username_str_1 = "{$=ii_itake('validator.check_username_1', 'lng')}"
+  var check_username_str_error = "{$=ii_itake('validator.check_username_error', 'lng')}"
+  var check_username_str = "{$=ii_itake('validator.check_username', 'lng')}";
+  if (tstrers == "1")
+  {
+    get_id("ck_username").innerHTML = check_username_str_1;
+  }
+  else
+  {
+    if (tstrers == "0")
+    {
+      get_id("ck_username").innerHTML = check_username_str_0;
+    }
+    else
+    {
+      get_id("ck_username").innerHTML = check_username_str_error;
+    };
+  };
+};
+
+function jscheck_username(struname)
+{
+  if (struname == "") return false;
+  var check_username_ing = "{$=ii_itake('validator.check_username_ing', 'lng')}";
+  get_id("ck_username").innerHTML = check_username_ing;
+  igets("interface.php?type=check_username&username=" + struname, jscheck_usernames);
+};
+</script>
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('module.read','lng')}</h3>
+        <div class="box1s">
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td height="25" align="left"><img src="{$=#images_route}small/icon_list.gif" border="0" />&nbsp;{$=ii_itake('module.process','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_a','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_b','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_c','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.process_d','lng')}</td>
+            </tr>
+            <tr>
+              <td height="5"></td>
+            </tr>
+            <tr>
+              <td height="25" align="left"><img src="{$=#images_route}small/icon_list.gif" border="0" />&nbsp;{$=ii_itake('module.notice','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.notice_a','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.notice_b','lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" align="left">{$=ii_itake('module.notice_c','lng')}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('module.new','lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <form action="{$=#nuri}?action=register" method="post" onSubmit="return Validator.Validate(this, 2)">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td height="25"><strong>{$=ii_itake('module.need','lng')}</strong></td>
+                </tr>
+              </table>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.username','lng')}</td>
+                  <td width="10"></td>
+                  <td><input type="text" id="username" name="username" size="15" class="text" dtype="Limit" min="2" max="16" dmsg="{$=ii_itake('validator.username', 'lng')}" value="{$=ii_htmlencode($_POST['username'], 1)}" /> <input type="button" value="{$=ii_itake('validator.check_username', 'lng')}" onclick="jscheck_username(escape(get_id('username').value))" class="button" /></td>
+                </tr>
+                <tr name="trck_username" id="trck_username" style="display:none;">
+                  <td height="25" align="right"></td>
+                  <td></td>
+                  <td name="ck_username" id="ck_username" class="red"></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.password','lng')}</td>
+                  <td></td>
+                  <td><input type="password" name="password" size="15" class="text"  dtype="Limit" min="4" max="32" dmsg="{$=ii_itake('validator.password', 'lng')}" value="{$=ii_htmlencode($_POST['password'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.password','lng')}</td>
+                  <td></td>
+                  <td><input type="password" name="cpassword" size="15" class="text" dtype="Repeat" to="password" dmsg="{$=ii_itake('validator.cpassword', 'lng')}" value="{$=ii_htmlencode($_POST['cpassword'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.email','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="email" size="20" class="text" dtype="Email" dmsg="{$=ii_itake('validator.email', 'lng')}" value="{$=ii_htmlencode($_POST['email'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.city','lng')}</td>
+                  <td></td>
+                  <td><select name="city" class="select">{$=ii_show_xmlinfo_select('global.sel_city.all', ii_get_num($_POST['city']), 'select')}</select></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.sex','lng')}</td>
+                  <td></td>
+                  <td><select name="sex" class="select">{$=ii_show_xmlinfo_select('global.sel_sex.all', ii_get_num($_POST['sex']), 'select')}</select></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.old','lng')}</td>
+                  <td></td>
+                  <td><select name="old" class="select">{$=ii_show_old_select(ii_get_num($_POST['old'], -1))}</select></td>
+                </tr>
+              </table>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td height="10"></td>
+                </tr>
+                <tr>
+                  <td height="25"><strong>{$=ii_itake('module.choice','lng')}</strong></td>
+                </tr>
+              </table>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.name','lng')}</td>
+                  <td width="10"></td>
+                  <td><input type="text" name="name" size="15" class="text" value="{$=ii_htmlencode($_POST['name'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.qq','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="qq" size="15" class="text" value="{$=ii_htmlencode($_POST['qq'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.msn','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="msn" size="15" class="text" value="{$=ii_htmlencode($_POST['msn'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.phone','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="phone" size="15" class="text" value="{$=ii_htmlencode($_POST['phone'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.homepage','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="homepage" size="25" class="text" require="false" dtype="Url" dmsg="{$=ii_itake('validator.homepage', 'lng')}" value="{$=ii_htmlencode($_POST['homepage'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.code','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="code" size="15" class="text" value="{$=ii_htmlencode($_POST['code'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.address','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="address" size="40" class="text" value="{$=ii_htmlencode($_POST['address'], 1)}" /></td>
+                </tr>
+                <tr>
+                  <td height="10"></td>
+                  <td></td>
+                  <td></td>
+                </tr>{@recurrence_valcode}
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('global.lng_config.valcode', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="valcode" size="4" dtype="Require" dmsg="{$=ii_itake('validator.valcode', 'lng')}" class="text" value="{$=ii_htmlencode($_POST['valcode'], 1)}" /> {$=mm_valcode()}</td>
+                </tr>{@recurrence_valcode}
+                <tr>
+                  <td height="35" align="right"></td>
+                  <td></td>
+                  <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button" /> <input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button" /></td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[manage_member]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">{$=ap_user_data_member_side()}</div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('member.userinfo', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.hello', 'lng')}, <strong>{$=#nusername}</strong>, {$=ii_itake('config.lasttime', 'lng')}: {$pretime}</td>
+                </tr>
+              </table>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.username', 'lng')}</td>
+                  <td width="10"></td>
+                  <td>{$username}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.group', 'lng')}</td>
+                  <td></td>
+                  <td>{$=ii_itake('sel_group.{$utype}', 'sel')}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.name', 'lng')}</td>
+                  <td></td>
+                  <td>{$name}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.email', 'lng')}</td>
+                  <td></td>
+                  <td>{$email}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('global.lng_noun.emoney', 'lng')}</td>
+                  <td></td>
+                  <td>{$emoney}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('global.lng_noun.integral', 'lng')}</td>
+                  <td></td>
+                  <td>{$integral}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.sign', 'lng')}</td>
+                  <td></td>
+                  <td>{$sign}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.time', 'lng')}</td>
+                  <td></td>
+                  <td>{$time}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[manage_information]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">{$=ap_user_data_member_side()}</div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('member.information', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <form action="{$=#nuri}?action=manage&mtype=information&backurl={$=urlencode($GLOBALS['nurl'])}" method="post">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.username', 'lng')}</td>
+                  <td width="10"></td>
+                  <td><strong>{$=#nusername}</strong></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.email', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="email" size="40" maxlength="40" class="text" value="{$email}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.city', 'lng')}</td>
+                  <td></td>
+                  <td><select name="city" class="select">{$=ii_show_xmlinfo_select('global.sel_city.all', '{$city}', 'select')}</select></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.sex', 'lng')}</td>
+                  <td></td>
+                  <td><select name="sex" class="select">{$=ii_show_xmlinfo_select('global.sel_sex.all', '{$sex}', 'select')}</select></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.old', 'lng')}</td>
+                  <td></td>
+                  <td><select name="old" class="select">{$=ii_show_old_select('{$old}')}</select></td>
+                </tr>
+              </table>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td height="10"></td>
+                </tr>
+              </table>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.name', 'lng')}</td>
+                  <td width="10"></td>
+                  <td><input type="text" size="20" name="name" class="text" maxlength="50" value="{$name}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.qq', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="20" name="qq" class="text" maxlength="50" value="{$qq}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.msn', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="20" name="msn" class="text" maxlength="50" value="{$msn}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.phone', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="20" name="phone" class="text" maxlength="50" value="{$phone}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.homepage', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="40" name="homepage" class="text" maxlength="50" value="{$homepage}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.code', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="20" name="code" class="text" maxlength="50" value="{$code}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.address', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="40" name="address" class="text" maxlength="50" value="{$address}" /></td>
+                </tr>
+                <tr>
+                  <td height="35" align="right"></td>
+                  <td></td>
+                  <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit', 'lng')}" class="button" />&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset', 'lng')}" class="button" /></td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[manage_password]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">{$=ap_user_data_member_side()}</div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('member.password', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <form method="post" action="{$=#nuri}?action=manage&mtype=password&backurl={$=urlencode($GLOBALS['nurl'])}">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.username', 'lng')}</td>
+                  <td width="10"></td>
+                  <td><strong>{$=#nusername}</strong></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.old_password', 'lng')}</td>
+                  <td></td>
+                  <td><input type="password" name="password" size="20" class="text" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.new_password', 'lng')}</td>
+                  <td></td>
+                  <td><input type="password" name="npassword" size="20" class="text" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.new_password', 'lng')}</td>
+                  <td></td>
+                  <td><input type="password" name="ncpassword" size="20" class="text" /></td>
+                </tr>
+                <tr>
+                  <td height="35" align="right"></td>
+                  <td></td>
+                  <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button" /> <input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button" /></td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[manage_userset]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<script type="text/javascript">
+function check_face_width(strwidth)
+{
+  var face_width_max = {$=#face_width_max};
+  if (get_num(strwidth) > face_width_max)
+  {
+    alert("{$=ii_itake('module.wh_max', 'lng')}");
+    get_id("face_width").value = face_width_max;
+  };
+};
+
+function check_face_height(strheight)
+{
+  var face_height_max = {$=#face_height_max};
+  if (get_num(strheight) > face_height_max)
+  {
+    alert("{$=ii_itake('module.wh_max', 'lng')}");
+    get_id("face_height").value = face_height_max;
+  };
+};
+</script>
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">{$=ap_user_data_member_side()}</div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('member.userset', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <form method="post" action="{$=#nuri}?action=manage&mtype=userset&backurl={$=urlencode($GLOBALS['nurl'])}">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.username', 'lng')}</td>
+                  <td width="10"></td>
+                  <td><strong>{$=#nusername}</strong></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.face', 'lng')}</td>
+                  <td></td>
+                  <td><select name="face" onchange="get_id('myface').src='{$=#global_images_route}face/' + this.options[this.selectedIndex].value + '.gif';">{$=ii_show_num_select(0, 1, '{$face}')}</select> <img name="myface" id="myface" src="{$=#global_images_route}face/{$face}.gif" border="0" class="absmiddle" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.face_u', 'lng')}</td>
+                  <td></td>
+                  <td>{$=mm_sel_yesno('face_u', {$face_u})}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.face_url', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="40" name="face_url" class="text" maxlength="50" value="{$face_url}" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.face_width', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="3" id="face_width" name="face_width" class="text" maxlength="3" value="{$face_width}" onkeyup="check_face_width(this.value)" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.face_height', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="3" id="face_height" name="face_height" class="text" maxlength="3" value="{$face_height}" onkeyup="check_face_height(this.value)" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.sign', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" size="50" name="sign" class="text" maxlength="50" value="{$sign}" /></td>
+                </tr>
+                <tr>
+                  <td height="35" align="right"></td>
+                  <td></td>
+                  <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button" /> <input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button" /></td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[user_detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">{$=ap_user_data_member_side()}</div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('member.userdetail', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="70" height="25" align="left">{$=ii_itake('config.username', 'lng')}</td>
+                  <td width="10"></td>
+                  <td>{$username}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.group', 'lng')}</td>
+                  <td></td>
+                  <td>{$=ii_itake('sel_group.{$utype}', 'sel')}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.city', 'lng')}</td>
+                  <td></td>
+                  <td>{$=ii_itake('global.sel_city.{$city}', 'sel')}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.sex', 'lng')}</td>
+                  <td></td>
+                  <td>{$=ii_itake('global.sel_sex.{$sex}', 'sel')}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.old', 'lng')}</td>
+                  <td></td>
+                  <td>{$old}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.email', 'lng')}</td>
+                  <td></td>
+                  <td>{$email}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.qq', 'lng')}</td>
+                  <td></td>
+                  <td>{$qq}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.homepage', 'lng')}</td>
+                  <td></td>
+                  <td><a href="{$homepage}" target="_blank">{$homepage}</a></td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('global.lng_noun.integral', 'lng')}</td>
+                  <td></td>
+                  <td>{$integral}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.sign', 'lng')}</td>
+                  <td></td>
+                  <td>{$sign}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="left">{$=ii_itake('config.time', 'lng')}</td>
+                  <td></td>
+                  <td>{$time}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[lostpassword]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">{$=ap_user_data_member_side()}</div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('global.' . USER_FOLDER . ':api.lost_password', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td height="25"><b>{$=ii_itake('config.hint', 'lng')}</b></td>
+                </tr>
+                <tr>
+                  <td>{$=ii_itake('module.lostpassword_notice', 'lng')}</td>
+                </tr>
+                <tr>
+                  <td height="15"></td>
+                </tr>
+              </table>
+              <form method="post" action="{$=#nuri}?action=lostpassword">
+              <table cellspacing="0" cellpadding="0" class="tablem">
+                <tr>
+                  <td width="70" height="25" align="right">{$=ii_itake('config.username', 'lng')}</td>
+                  <td width="10"></td>
+                  <td><input type="text" name="username" size="20" class="text" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.email', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="email" size="20" class="text" /></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('config.name', 'lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="name" size="20" class="text" /></td>
+                </tr>
+                <tr>
+                  <td height="35" align="right"></td>
+                  <td></td>
+                  <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button" /> <input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button" /></td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[login]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">{$=ap_user_data_member_side()}</div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('global.' . USER_FOLDER . ':api.userlogin', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <form action="{$=#nuri}?action=login&backurl={$=urlencode($_GET['backurl'])}" method="post">
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td width="100" height="25" align="right">{$=ii_itake('global.lng_config.username', 'lng')}</td>
+                  <td width="10"></td>
+                  <td><input type="text" name="username" size="20" class="text"></td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('global.lng_config.password', 'lng')}</td>
+                  <td></td>
+                  <td><input type="password" name="password" size="20" class="text"></td>
+                </tr>{@recurrence_valcode}
+                <tr>
+                  <td height="25" align="right">{$=ii_itake('global.' . USER_FOLDER . ':api.valcode','lng')}</td>
+                  <td></td>
+                  <td><input type="text" name="valcode" size="4" class="text">&nbsp;{$=mm_valcode()}</td>
+                </tr>{@recurrence_valcode}
+                <tr>
+                  <td height="35"></td>
+                  <td></td>
+                  <td><input type="submit" value="{$=ii_itake('global.' . USER_FOLDER . ':api.login','lng')}" class="button" /> <img src="{$=#global_images_route}public/small/sico.gif" border="0" class="absmiddle" /> <a href="./">{$=ii_itake('global.' . USER_FOLDER . ':api.register_newuser', 'lng')}</a> <a href="./?type=lostpassword">{$=ii_itake('global.' . USER_FOLDER . ':api.lost_password', 'lng')}</a></td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[topic]]></disinfo>
+      <chinese><![CDATA[用户中心]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[userinfo]]></disinfo>
+      <chinese><![CDATA[我的信息]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[information]]></disinfo>
+      <chinese><![CDATA[资料修改]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[password]]></disinfo>
+      <chinese><![CDATA[密码修改]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[userset]]></disinfo>
+      <chinese><![CDATA[个人设置]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[userdetail]]></disinfo>
+      <chinese><![CDATA[用户资料]]></chinese>
+    </item>
+  </language_list>
+</xml>

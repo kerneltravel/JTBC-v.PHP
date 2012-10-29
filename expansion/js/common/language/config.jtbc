@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[topic]]></disinfo>
+      <chinese><![CDATA[JS名称]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[content]]></disinfo>
+      <chinese><![CDATA[内容]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[retimetype]]></disinfo>
+      <chinese><![CDATA[时间类型]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[retimevalue]]></disinfo>
+      <chinese><![CDATA[过期时间]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[retime]]></disinfo>
+      <chinese><![CDATA[更新时间]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[createjs]]></disinfo>
+      <chinese><![CDATA[生成JS]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[jspath]]></disinfo>
+      <chinese><![CDATA[生成的JS路径]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[create]]></disinfo>
+      <chinese><![CDATA[生成或者更新此记录]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[create_error0]]></disinfo>
+      <chinese><![CDATA[JS的调用内容中存在语言错误]]></chinese>
+    </item>
+  </language_list>
+</xml>

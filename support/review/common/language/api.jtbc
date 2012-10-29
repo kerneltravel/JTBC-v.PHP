@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[view]]></disinfo>
+      <chinese><![CDATA[查看所有评论内容]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[formtit]]></disinfo>
+      <chinese><![CDATA[我要评论]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[outputtit]]></disinfo>
+      <chinese><![CDATA[相关评论]]></chinese>
+    </item>
+  </language_list>
+</xml>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfg" author="jetiben">
+  <configure>
+  <item varstr="npagesize" strvalue="20" />
+  </configure>
+</xml>

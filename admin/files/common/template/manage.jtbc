@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[navigation]]></name>
+      <tpl_default><![CDATA[
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="fileslist"><a href="?hspan=fileslist">{$=ii_itake('manage.fileslist','lng')}</a></span>&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="filesadd"><a href="?type=add_file&show_path={$=urlencode($GLOBALS['nshow_path_str'])}&hspan=filesadd">{$=ii_itake('manage.filesadd','lng')}</a></span>&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="folderadd"><a href="?type=add_folder&show_path={$=urlencode($GLOBALS['nshow_path_str'])}&hspan=folderadd">{$=ii_itake('manage.folderadd','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[
+<script language="javascript">
+var myid;
+
+function ncount_foldersize(strers)
+{
+  if (strers != '$error$') get_id(myid).innerHTML = strers;
+}
+
+function count_foldersize(seid, strers)
+{
+  myid = seid;
+  get_id(seid).innerHTML = 'Loading..';
+  igets('?action=count_foldersize&folder=' + escape(strers), ncount_foldersize);
+}
+</script>
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.manage','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.path', 'lng')}{$path}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.foldercount', 'lng')}{$foldercount} {$=ii_itake('global.lng_unit.ge','lng')} {$=ii_itake('manage.filescount', 'lng')}{$filescount} {$=ii_itake('global.lng_unit.ge','lng')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25" class="red"><a href="javascript:history.go(-1)"><b>←</b></a>&nbsp;<a href="javascript:history.go(1)"><b>→</b></a></td>
+                    </tr>
+                  </table>{@recurrence_ida}
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0" class="green">
+                    <tr>
+                      <td width="*" height="25"><img src="{$=#global_images_route}file/folder.gif" border="0" align="absmiddle"> <a href="?type=show_files&show_path={$nfolderpath}">{$nfoldername}</a></td>
+                      <td width="120"></td>
+                      <td width="100" id="{$nfoldername}"><a href="javascript:count_foldersize('{$nfoldername}', '{$nfolderpath}')">*.*</a></td>
+                      <td align="center" width="50"><a href="?type=edit_folder&folder_path={$nfolderpath}"><img src="{$=#global_images_route}public/small/edit.gif" border="0"></a> <a href="{$nfolderpaths}" target="_blank"><img src="{$=#global_images_route}public/small/url.gif" border="0"></a></td>
+                      <td align="center" width="50"><a href="?action=delete_folder&folder_path={$nfolderpath}&backurl={$=urlencode($GLOBALS['nurl'])}" onclick="return click_return('{$=ii_itake('global.lng_admin.admin_confirm2','lng')}[{$nfoldernamestr}]')"><img src="{$=#global_images_route}public/small/delete.gif" border="0"></a></td>
+                    </tr>
+                  </table>{@recurrence_ida}{@recurrence_idb}
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0" class="red">
+                    <tr>
+                      <td width="*" height="25"><img src="{$=#global_images_route}file/{$nftype}.gif" border="0" align="absmiddle"> <a href="?type=edit_file&file_path={$nfilepath}">{$nfilename}</a></td>
+                      <td width="120">{$nfiletime}</td>
+                      <td width="100">{$nfilesize}</td>
+                      <td align="center" width="50"><a href="?type=edit_file&file_path={$nfilepath}"><img src="{$=#global_images_route}public/small/edit.gif" border="0"></a> <a href="{$nfilepaths}" target="_blank"><img src="{$=#global_images_route}public/small/url.gif" border="0"></a></td>
+                      <td align="center" width="50"><a href="?action=delete_file&file_path={$nfilepath}&backurl={$=urlencode($GLOBALS['nurl'])}" onclick="return click_return('{$=ii_itake('global.lng_admin.admin_confirm2','lng')}[{$nfilenamestr}]')"><img src="{$=#global_images_route}public/small/delete.gif" border="0"></a></td>
+                    </tr>
+                  </table>{@recurrence_idb}
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.upload','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form method="post" action="?action=upload&path={$=urlencode($GLOBALS['nshow_path'])}&backurl={$=urlencode($GLOBALS['nuri'] . '?show_path=' . urlencode($GLOBALS['nshow_path_str']))}" enctype="multipart/form-data">
+                    <tr>
+                      <td width="100%" height="25"><input type="file" name="file1"> <input type="submit" class="button" name="up_button" value="{$=ii_itake('global.lng_config.upload','lng')}"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[add_file]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.filesadd','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="25" class="red">{$=ii_ireplace('manage.notice','lng')}</td>
+                    </tr>
+                    <form method="post" action="?action=add_file&backurl={$=urlencode($GLOBALS['nurr'] . '?show_path=' . $_GET['show_path'])}">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%">{$=ii_itake('manage.filename','lng')}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%"><input type="text" name="file_path" size="55" value="{$=#nshow_path_str}{$=ii_format_date(ii_now(), 1)}.txt"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%"><textarea rows="25" name="filetext" cols="55"></textarea></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25"><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[edit_file]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.title','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="25" class="red">{$=ii_ireplace('manage.notice','lng')}</td>
+                    </tr>
+                    <form method="post" action="?action=edit_file&backurl={$=urlencode($GLOBALS['nurl'])}">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%">{$=ii_itake('manage.filename','lng')}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%"><input type="text" name="file_path" size="55" value="{$=ii_htmlencode($_GET['file_path'], 1)}"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%"><textarea rows="25" name="filetext" cols="55">{$=ii_htmlencode(file_get_contents(iconv(CHARSET, 'cp936', stripslashes(ii_cstr($_GET['file_path'])))))}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25"><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[add_folder]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellspacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.folderadd','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <form method="post" action="?action=add_folder&backurl={$=urlencode($GLOBALS['nurr'] . '?show_path=' . $_GET['show_path'])}">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%"><input type="text" name="folder_path" size="55" value="{$=#nshow_path_str}{$=ii_format_date(ii_now(), 1)}"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25"><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[edit_folder]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellspacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.titleb','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <form method="post" action="?action=edit_folder&backurl={$=urlencode($GLOBALS['nurl'])}">
+                    <tr>
+                      <td width="100%" height="5"><input type="hidden" name="folder_patha" value="{$=ii_htmlencode($_GET['folder_path'])}"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%"><input type="text" name="folder_pathb" size="55" value="{$=ii_htmlencode($_GET['folder_path'])}"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25"><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

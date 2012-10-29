@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>value,chinese</field>
+    <base>sel_list</base>
+  </configure>
+  <sel_list>
+    <item>
+      <value><![CDATA[tpl1]]></value>
+      <chinese><![CDATA[投票一号模板]]></chinese>
+    </item>
+  </sel_list>
+</xml>

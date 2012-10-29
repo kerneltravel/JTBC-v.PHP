@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('module.class', 'lng')}</h3>{$=vv_isort('{$genre}', 'tpl=sort')}
+      </div>
+      <div class="box1">
+        <h3>{$=ii_itake('module.good','lng')}</h3>{$=vv_itransfer('good', '1', 'topx=10;tnum=26')}
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation('{$genre}', 'classid={$classid};strers=module;strurl={$genre}')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">{@recurrence_ida}
+              <div class="probox1">
+                <table width="140" cellspacing="0" cellpadding="0" border="0" align="center">
+                  <tr>
+                    <td><div class="imgbox1"><a href="{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'], 'folder=' . $GLOBALS['ncreatefolder'] . ';filetype=' . $GLOBALS['ncreatefiletype'] . ';time={$time}')}" title="{$topic}"><img src="{$image}" alt="{$image}" width="122" height="96" /></a></div></td>
+                  </tr>
+                  <tr>
+                    <td height="40" align="center">{$topic}</td>
+                  </tr>
+                  <tr>
+                    <td height="10"></td>
+                 </tr>
+                </table>
+              </div>{@recurrence_ida}
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+          <tr>
+            <td><div id="cutepage" class="cutepage">{$cpagestr}</div></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('module.class', 'lng')}</h3>{$=vv_isort('{$genre}', 'tpl=sort')}
+      </div>
+      <div class="box1">
+        <h3>{$=ii_itake('module.good','lng')}</h3>{$=vv_itransfer('good', '1', 'topx=10;tnum=26')}
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation('{$genre}', 'classid={$class};strers=module;strurl={$genre}')}</span></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+          <tr>
+            <td class="topic"><div>{$topic}</div></td>
+          </tr>
+          <tr>
+            <td height="25" align="right">{$=ii_itake('global.lng_config.time','lng')}:{$time},{$=ii_itake('global.lng_config.count','lng')}:<span id="count">0</span></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+          <tr>
+            <td class="content"><div>{$=mm_encode_content($GLOBALS['RS_content'], '{$cttype}')}</div></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+          <tr>
+            <td align="right">【<a href="javascript:window.print()">{$=ii_itake('global.lng_config.print','lng')}</a>】【<a href="javascript:self.close()">{$=ii_itake('global.lng_config.close','lng')}</a>】</td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<script type="text/javascript">
+function innerCOUNT(strers)
+{
+  if (strers != "$error$") get_id("count").innerHTML = strers;
+};
+igets("{$=ii_get_actual_route('expansion')}/count/?genre={$=urlencode($GLOBALS['ngenre'])}&id={$id}", innerCOUNT);
+</script>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

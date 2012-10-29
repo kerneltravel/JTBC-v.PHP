@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[1]]></name>
+      <tpl_default><![CDATA[<ul>{@}
+  <li><span><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, {$urltype}, 'folder={$createfolder};filetype={$createfiletype};time={$time}'))}">{$topic}</a></span></li>{@}
+</ul>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[2]]></name>
+      <tpl_default><![CDATA[<ul>{@}
+  <li><span><a href="{$link}" target="_blank">{$title}</a></span></li>{@}
+</ul>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sort]]></name>
+      <tpl_default><![CDATA[<ul>{@}
+  <li><span><a href="{$=ii_curl('{$baseurl}', ii_iurl('list', {$id}, {$urltype}, 'folder={$createfolder};filetype={$createfiletype}'))}">{$sort}</a></span></li>{@}
+</ul>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[m1]]></name>
+      <tpl_default><![CDATA[{@}<a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, {$urltype}, 'folder={$createfolder};filetype={$createfiletype};time={$time}'))}">{$topic}</a> | {@}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

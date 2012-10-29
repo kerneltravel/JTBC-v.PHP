@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="80" height="25">{$=ii_itake('config.index_filename','lng')}</td>
+    <td width="*"><input type="text" name="index_filename" id="index_filename" size="5" value="index">{$=#n_createfiletype}</td>
+  </tr>
+  <tr>
+    <td height="25"></td>
+    <td><input type="button" value="{$=ii_itake('config.submit','lng')}" class="button" onclick="create_ct_page('index');"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="80" height="25">{$=ii_itake('config.sort','lng')}</td>
+    <td width="*"><select name="sort" id="sort" class="select"><option value="-1">{$=ii_itake("global.lng_config.all", "lng")}</option>{$=mm_sel_sort($GLOBALS['n_module'], $GLOBALS['nlng'], 0)}</select></td>
+  </tr>
+  <tr>
+    <td height="25">{$=ii_itake('config.option','lng')}</td>
+    <td><input type="checkbox" name="sort_child" id="sort_child" value="1" checked class="checkbox">{$=ii_itake('config.sort_child','lng')}</td>
+  </tr>
+  <tr>
+    <td height="25"></td>
+    <td><input type="button" value="{$=ii_itake('config.submit','lng')}" class="button" onclick="create_ct_page('list');"> <input type="button" value="{$=ii_itake('config.continue','lng')}" onclick="ncontinue_try_it('list');" style="visibility:hidden" name="continue_try_it" id="continue_try_it"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="80" height="25">{$=ii_itake('config.sort','lng')}</td>
+    <td width="*"><select name="sort" id="sort" class="select" onchange="get_id_min_max();"><option value="-1">{$=ii_itake("global.lng_config.all", "lng")}</option>{$=mm_sel_sort($GLOBALS['n_module'], $GLOBALS['nlng'], 0)}</select></td>
+  </tr>
+  <tr>
+    <td height="25">{$=ii_itake('config.option','lng')}</td>
+    <td><input type="checkbox" name="sort_child" id="sort_child" value="1" checked class="checkbox" onclick="get_id_min_max();">{$=ii_itake('config.sort_child','lng')} <input type="checkbox" name="isupdate" id="isupdate" value="1" checked class="checkbox" onclick="get_id_min_max();">{$=ii_itake('config.isupdate','lng')}</td>
+  </tr>
+  <tr>
+    <td height="25">{$=ii_itake('config.id_area','lng')}</td>
+    <td><input type="text" name="id_min" id="id_min" size="8" value="{$id_min}"> - <input type="text" name="id_max" id="id_max" size="8" value="{$id_max}"></td>
+  </tr>
+  <tr>
+    <td height="25"></td>
+    <td><input type="button" value="{$=ii_itake('config.submit','lng')}" class="button" onclick="create_ct_page('detail');"> <input type="button" value="{$=ii_itake('config.continue','lng')}" onclick="ncontinue_try_it('detail');" style="visibility:hidden" name="continue_try_it" id="continue_try_it"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

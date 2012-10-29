@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('module.announce','lng')}</h3>
+        <div class="box1s">{$=ii_encode_article(ii_itake('module.announce_content','lng'))}</div>
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=ii_itake('module.channel_title', 'lng')}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">{@recurrence_ida}
+                <tr>
+                  <td height="25"><strong>{$author}</strong></td>
+                </tr>
+                <tr>
+                  <td>{$=ii_encode_article(mm_ubbcode(ii_htmlencode($GLOBALS['RS_content']), 0))}</td>
+                </tr>
+                <tr>
+                  <td height="25" align="right">{$time} <span class="ash">[{$=ii_format_ip(ii_htmlencode($GLOBALS['RS_authorip']), 2)}]</span></td>
+                </tr>
+                <tr>
+                  <td height="10"></td>
+                </tr>{@recurrence_ida}
+                <tr>
+                  <td><div id="ct-cutepage" class="cutepage">{$cpagestr}</div></td>
+                </tr>
+                <tr>
+                  <td height="10"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

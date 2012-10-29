@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>value,chinese</field>
+    <base>sel_list</base>
+  </configure>
+  <sel_list>
+    <item>
+      <value><![CDATA[-1]]></value>
+      <chinese><![CDATA[已撤消的订单]]></chinese>
+    </item>
+    <item>
+      <value><![CDATA[0]]></value>
+      <chinese><![CDATA[未处理的订单]]></chinese>
+    </item>
+    <item>
+      <value><![CDATA[1]]></value>
+      <chinese><![CDATA[已发货的订单]]></chinese>
+    </item>
+    <item>
+      <value><![CDATA[2]]></value>
+      <chinese><![CDATA[已结束的订单]]></chinese>
+    </item>
+    <item>
+      <value><![CDATA[3]]></value>
+      <chinese><![CDATA[有问题的订单]]></chinese>
+    </item>
+  </sel_list>
+</xml>

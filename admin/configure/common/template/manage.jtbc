@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+    <table border="0" width="98%" cellSpacing="0" cellPadding="0" class="lrbtline">
+      <tr>
+        <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.title','lng')}</td>
+      </tr>
+      <tr>
+        <td width="100%" align="center">
+          <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+            <form name="form" method="get">
+            <input type="hidden" name="type" value="edit">
+            <tr>
+              <td width="100%" height="25">{$=ii_itake('manage.module','lng')}</td>
+            </tr>
+            <tr>
+              <td width="100%" height="25"><input type="text" name="module" id="module" size="20"></td>
+            </tr>
+            <tr>
+              <td width="100%" height="25"><select name="modules" onclick="get_id('module').value=this.value;">{$=pp_get_configure_select()}</select></td>
+            </tr>
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+            <tr>
+              <td width="100%" height="25"><input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+            </tr>
+            </form>
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[edit]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+    <table border="0" width="98%" cellSpacing="0" cellPadding="0" class="lrbtline">
+      <tr>
+        <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.title','lng')}</td>
+      </tr>
+      <tr>
+        <td width="100%" align="center">
+          <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+          </table>
+          <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+            <tr>
+              <td width="100%" height="25" class="red"><b><a href="{$=#nuri}">{$module}</a></b></td>
+            </tr>
+          </table>
+          <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+            <form name="form" method="post" action="?action=edit&module={$module}&backurl={$=urlencode($GLOBALS['nurl'])}">
+            <input type="hidden" name="xmlconfig_order" value="{$order}">{@recurrence_ida}
+            <tr>
+              <td width="100%" height="25">{$explain}</td>
+            </tr>
+            <tr>
+              <td width="100%" height="25"><input type="text" name="{$varstr}" size="30" value="{$strvalue}"></td>
+            </tr>{@recurrence_ida}
+            <tr>
+              <td><input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+            </tr>
+            </form>
+          </table>
+          <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

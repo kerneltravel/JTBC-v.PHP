@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[mgtitle]]></disinfo>
+      <chinese><![CDATA[执行SQL]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[title]]></disinfo>
+      <chinese><![CDATA[执行SQL语句]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[notice]]></disinfo>
+      <chinese><![CDATA[多条SQL语句请以分号相隔]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[noticeb]]></disinfo>
+      <chinese><![CDATA[执行SQL语句的操作是有一定危险性的，请在对自己的语句有一定把握了以后再进行操作]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[succeed]]></disinfo>
+      <chinese><![CDATA[执行成功]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[failed]]></disinfo>
+      <chinese><![CDATA[执行失败]]></chinese>
+    </item>
+  </language_list>
+</xml>

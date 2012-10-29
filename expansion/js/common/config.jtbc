@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfg" author="jetiben">
+  <configure>
+    <item varstr="npagesize" strvalue="20" />
+    <item varstr="ndatabase" strvalue="jtbc_expansion_js" />
+    <item varstr="nidfield" strvalue="jid" />
+    <item varstr="nfpre" strvalue="j_" />
+    <item varstr="nuninstall" strvalue="1|0|0" />
+  </configure>
+</xml>

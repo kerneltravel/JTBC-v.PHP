@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[language]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.language','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="module"><a href="?type=language&xml=.lng.module&hspan=module" target="_self">{$=ii_itake('manage.language_module','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="lng_noun"><a href="?type=language&xml=.lng.lng_noun&hspan=lng_noun" target="_self">{$=ii_itake('manage.language_noun','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="lng_unit"><a href="?type=language&xml=.lng.lng_unit&hspan=lng_unit" target="_self">{$=ii_itake('manage.language_unit','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.symbol','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                    <form method="get">
+                    <input type="hidden" name="type" value="language">
+                      <td width="100%" height="25">&nbsp;<input type="text" name="xml" value="{$=ii_htmlencode($_GET['xml'])}" size="10"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.title','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                <form action="?action=edit&backurl={$=urlencode($GLOBALS['nurl'])}" method="post">
+                  <input type="hidden" name="xmlconfig_node" value="{$node}">
+                  <input type="hidden" name="xmlconfig_field" value="{$field}">
+                  <input type="hidden" name="xmlconfig_base" value="{$base}">
+                  <input type="hidden" name="xmlconfig_burl" value="{$burl}">
+                  <input type="hidden" name="xmlconfig_order" value="{$order}">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25" class="red">{$=ii_itake('manage.notice','lng')}</td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">{@xml_recurrence_ida}
+                    <tr>
+                      <td width="20"><span style="display:{$display};"><a href="?action=delete&node={$namestr}&backurl={$=urlencode($GLOBALS['nurl'])}&xml={$=urlencode($_GET['xml'])}" onclick="return click_return('{$delete_notice}')"><img src="{$=#global_images_route}public/small/delete.gif" border="0"></a></span></td>
+                      <td width="100" class="green">{$disinfo}</td>
+                      <td width="*"><textarea rows="{$rows}" name="{$name}[]" cols="50" ondblclick='this.rows+=3;'>{$value}</textarea></td>
+                    </tr>{@xml_recurrence_ida}
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="25"><img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="javascript:switch_display('tb_new_node')">{$=ii_itake('manage.add','lng')}</a></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0" id="tb_new_node" style="display:none;">{@xml_recurrence_idb}
+                    <tr>
+                      <td width="20"></td>
+                      <td width="100" class="green">{$disinfo}</td>
+                      <td width="*"><textarea rows="{$rows}" name="xmlconfig_new_node[]" cols="50" ondblclick='this.rows+=3;'></textarea></td>
+                    </tr>{@xml_recurrence_idb}
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5" colspan="3"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25" colspan="3"><input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </table>
+                </form>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[template]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.template','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="module"><a href="?type=template&xml=.tpl.module&hspan=module" target="_self">{$=ii_itake('manage.template_index','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="tpl_public"><a href="?type=template&xml=.tpl.tpl_public&hspan=tpl_public" target="_self">{$=ii_itake('manage.template_headfoot','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="tpl_transfer"><a href="?type=template&xml=.tpl.tpl_transfer&hspan=tpl_transfer" target="_self">{$=ii_itake('manage.template_transfer','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.symbol','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                    <form method="get">
+                    <input type="hidden" name="type" value="template">
+                      <td width="100%" height="25">&nbsp;<input type="text" name="xml" value="{$=ii_htmlencode($_GET['xml'])}" size="10"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.title','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                <form action="?action=edit&backurl={$=urlencode($GLOBALS['nurl'])}" method="post">
+                  <input type="hidden" name="xmlconfig_node" value="{$node}">
+                  <input type="hidden" name="xmlconfig_field" value="{$field}">
+                  <input type="hidden" name="xmlconfig_base" value="{$base}">
+                  <input type="hidden" name="xmlconfig_burl" value="{$burl}">
+                  <input type="hidden" name="xmlconfig_order" value="{$order}">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25" class="red">{$=ii_itake('manage.notice','lng')}</td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">{@xml_recurrence_ida}
+                    <tr>
+                      <td width="20"><span style="display:{$display};"><a href="?action=delete&node={$namestr}&backurl={$=urlencode($GLOBALS['nurl'])}&xml={$=urlencode($_GET['xml'])}" onclick="return click_return('{$delete_notice}')"><img src="{$=#global_images_route}public/small/delete.gif" border="0"></a></span></td>
+                      <td width="100" class="green">{$disinfo}</td>
+                      <td width="*"><textarea rows="{$rows}" name="{$name}[]" cols="50" ondblclick='this.rows+=3;'>{$value}</textarea></td>
+                    </tr>{@xml_recurrence_ida}
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="25"><img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="javascript:switch_display('tb_new_node')">{$=ii_itake('manage.add','lng')}</a></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0" id="tb_new_node" style="display:none;">{@xml_recurrence_idb}
+                    <tr>
+                      <td width="20"></td>
+                      <td width="100" class="green">{$disinfo}</td>
+                      <td width="*"><textarea rows="{$rows}" name="xmlconfig_new_node[]" cols="50" ondblclick='this.rows+=3;'></textarea></td>
+                    </tr>{@xml_recurrence_idb}
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5" colspan="3"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25" colspan="3"><input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </table>
+                </form>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

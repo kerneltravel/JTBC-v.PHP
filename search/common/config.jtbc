@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfg" author="jetiben">
+  <configure>
+    <item varstr="nhead" strvalue="default_head" />
+    <item varstr="nfoot" strvalue="default_foot" />
+    <item varstr="npagesize" strvalue="20" />
+    <item varstr="nlisttopx" strvalue="2000" />
+    <item varstr="nsearch_genre" strvalue="article,product,download,shop" />
+    <item varstr="nsearch_field" strvalue="topic" />
+    <item varstr="nuninstall" strvalue="0|0|0" />
+  </configure>
+</xml>

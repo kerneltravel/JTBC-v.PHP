@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[tpl1]]></name>
+      <tpl_default><![CDATA[<form method="post" action="{$=ii_get_lrstr($GLOBALS['nuri'], '/', 'leftr')}/index.php?action=vote&id={$vid}">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="25"><b>{$vtopic}</b></td>
+  </tr>{@}
+  <tr>
+    <td height="25"><input type="{$=pp_vote_type({$type})}" name="votes[]" value="{$id}" class="radio" /> {$topic}</span></td>
+  </tr>{@}
+  <tr>
+    <td height="5"></td>
+  </tr>
+  <tr>
+    <td height="25"><input type="submit" value="{$=ii_itake('module.submit','lng')}" class="button" /> <input type="button" value="{$=ii_itake('module.view','lng')}" class="button" onclick="pop_win('{$=ii_get_lrstr($GLOBALS['nuri'], '/', 'leftr')}/?type=view&id={$vid}', '_blank', 300, 300, 'yes');" /></td>
+  </tr>
+  <tr>
+    <td height="5"></td>
+  </tr>
+</table>
+</form>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[jslogin]]></name>
+      <tpl_default><![CDATA[<div id="jstdlogin"></div>
+<script type="text/javascript">
+function jslogins(strers)
+{
+  if (!(strers == "$error$"))
+  {
+    get_id("jstdlogin").innerHTML = strers ;
+  }
+  else
+  {
+    get_id("jstdlogin").innerHTML = "{$=ii_itake('global.' . USER_FOLDER . ':api.jslogin_error3', 'lng')}";
+    setTimeout("jslogin()", 3000);
+  };
+};
+
+function jslogin()
+{
+  get_id("jstdlogin").innerHTML = "{$=ii_itake('global.' . USER_FOLDER . ':api.jslogin_load', 'lng')}";
+  igets("{$=ii_get_actual_route(USER_FOLDER)}/interface.php?type=login", jslogins);
+};
+
+function jslogin_logins(strers)
+{
+  var tstr = strers;
+  switch(tstr)
+  {
+    case "error1":
+      alert("{$=ii_itake('global.lng_error.valcode', 'lng')}");
+      break;
+    case "error2":
+      alert("{$=ii_itake('global.' . USER_FOLDER . ':api.jslogin_error1', 'lng')}");
+      break;
+    case "$error$":
+      alert("{$=ii_itake('global.' . USER_FOLDER . ':api.jslogin_error2', 'lng')}");
+      break;
+    default:
+  };
+  jslogin();
+};
+
+function jslogin_login(struname, strupassword, strvalcode)
+{
+  get_id("jstdlogin").innerHTML = "{$=ii_itake('global.' . USER_FOLDER . ':api.jslogin_loading', 'lng')}";
+  igets("{$=ii_get_actual_route(USER_FOLDER)}/interface.php?type=nlogin&username=" + struname + "&password=" + strupassword + "&valcode=" + strvalcode, jslogin_logins);
+};
+
+jslogin();
+</script>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[jslogin_login]]></name>
+      <tpl_default><![CDATA[
+<form onsubmit="return false;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td width="50" height="25">{$=ii_itake('global.lng_config.username','lng')}</td>
+    <td><input type="text" id="jslogin_username" name="jslogin_username" style="width: 120px" class="text" /></td>
+  </tr>
+  <tr>
+    <td height="25">{$=ii_itake('global.lng_config.password','lng')}</td>
+    <td><input type="password" id="jslogin_password" name="jslogin_password" style="width: 120px" class="text" /></td>
+  </tr>{@recurrence_valcode}
+  <tr>
+    <td height="25">{$=ii_itake('global.lng_config.valcode','lng')}</td>
+    <td><input type="text" id="jslogin_valcode" name="jslogin_valcode" size="4" style="width: 52px" class="text" />&nbsp;<img src="{$=#images_route}code/code.php?{$=ii_random(12)}" onclick="this.src='{$=#images_route}code/code.php?' + Math.floor(Math.random() * 99999 + 1)" align="absmiddle" style="CURSOR:hand; CURSOR:pointer" /></td>
+  </tr>{@recurrence_valcode}
+  <tr>
+    <td height="35"></td>
+    <td><input type="submit" value="{$=ii_itake('global.' . USER_FOLDER . ':api.login','lng')}" class="button" onclick="jslogin_login(escape(get_id('jslogin_username').value), escape(get_id('jslogin_password').value), escape(get_id('jslogin_valcode')? get_id('jslogin_valcode').value: ''));" />&nbsp;&nbsp;<a href="{$=ii_get_lrstr($GLOBALS['nuri'], '/', 'leftr')}">{$=ii_itake('global.' . USER_FOLDER . ':api.register','lng')}</a>&nbsp;<a href="{$=ii_get_lrstr($GLOBALS['nuri'], '/', 'leftr')}/?type=lostpassword">{$=ii_itake('global.' . USER_FOLDER . ':api.lost_password', 'lng')}</a></td>
+  </tr>
+</table>
+</form>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[jslogin_logined]]></name>
+      <tpl_default><![CDATA[
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td height="25">{$=ii_itake('global.lng_config.username','lng')}:&nbsp;{$=#nusername}</td>
+  </tr>
+  <tr>
+    <td height="25">{$=ii_itake('global.' . USER_FOLDER . ':api.acttime','lng')}:&nbsp;{$=ii_format_date(ii_now(), 11)}</td>
+  </tr>
+  <tr>
+    <td height="25"><a href="{$=ii_get_lrstr($GLOBALS['nuri'], '/', 'leftr')}/message/?type=list" target="_self">{$=str_replace('[]', '[<font class="red">' . ap_count_user_message($GLOBALS['nusername']) . '</font>]', ii_itake('global.' . USER_FOLDER . ':api.message', 'lng'))}</a></td>
+  </tr>
+  <tr>
+    <td height="25"><a href="{$=ii_get_lrstr($GLOBALS['nuri'], '/', 'leftr')}/?type=manage">{$=ii_itake('global.' . USER_FOLDER . ':api.membercenter','lng')}</a> <a href="{$=ii_get_lrstr($GLOBALS['nuri'], '/', 'leftr')}/?action=logout" onclick="return click_return('{$=ii_itake('global.' . USER_FOLDER . ':api.logoutstr', 'lng')}')">{$=ii_itake('global.' . USER_FOLDER . ':api.logout','lng')}</a></td>
+  </tr>
+</table>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

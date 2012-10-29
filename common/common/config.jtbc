@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfg" author="jetiben">
+  <configure>
+    <item varstr="nupmaxsize" strvalue="204800" />
+    <item varstr="nvalidate" strvalue="1" />
+    <item varstr="sort.ndatabase" strvalue="jtbc_sys_sort" />
+    <item varstr="sort.nidfield" strvalue="sortid" />
+    <item varstr="sort.nfpre" strvalue="sort_" />
+    <item varstr="admin.ndatabase" strvalue="jtbc_admin" />
+    <item varstr="admin.nidfield" strvalue="aid" />
+    <item varstr="admin.nfpre" strvalue="a_" />
+    <item varstr="adminlog.ndatabase" strvalue="jtbc_admin_log" />
+    <item varstr="adminlog.nidfield" strvalue="lid" />
+    <item varstr="adminlog.nfpre" strvalue="l_" />
+    <item varstr="upload.ndatabase" strvalue="jtbc_sys_upload" />
+    <item varstr="upload.nidfield" strvalue="upid" />
+    <item varstr="upload.nfpre" strvalue="up_" />
+    <item varstr="mail.type" strvalue="1" />
+    <item varstr="mail.smtpcharset" strvalue="gbk" />
+    <item varstr="mail.smtpserver" strvalue="" />
+    <item varstr="mail.smtpport" strvalue="25" />
+    <item varstr="mail.smtpusername" strvalue="" />
+    <item varstr="mail.smtppassword" strvalue="" />
+    <item varstr="mail.smtpfromname" strvalue="" />
+  </configure>
+</xml>

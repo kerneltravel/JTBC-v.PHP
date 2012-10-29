@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[navigation]]></name>
+      <tpl_default><![CDATA[
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="nav_list"><a href="?hspan=nav_list">{$=ii_itake('manage.nav_list','lng')}</a></span>&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="nav_add"><a href="?type=add&hspan=nav_add">{$=ii_itake('manage.nav_add','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_config.search','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <form method="get" name="search">
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<input type="text" name="keyword" size="10" value="{$=mm_get_admin_keyword()}"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<select name="field" class="select">{$=mm_get_admin_search()}</select></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<input type="submit" value="{$=ii_itake('global.lng_config.search','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.nav_list','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form method="post" name="sel_form" action="?action=control&backurl={$=urlencode($GLOBALS['nurl'])}" onSubmit="get_sel_id()">
+                  <input type="hidden" name="sel_ids">
+                    <tr>
+                      <td height="25" width="30"><input type="checkbox" name="sel_all" class="checkbox" onClick="select_all()"></td>
+                      <td width="*">{$=ii_itake('manage.topic','lng')}</td>
+                      <td width="100">{$=ii_itake('manage.type','lng')}</td>
+                      <td width="120">{$=ii_itake('global.lng_config.time','lng')}</td>
+                      <td align="center" width="50">{$=ii_itake('global.lng_config.edit','lng')}</td>
+                      <td align="center" width="50">{$=ii_itake('global.lng_config.delete','lng')}</td>
+                    </tr>{@recurrence_ida}
+                    <tr>
+                      <td height="25"><input type="checkbox" name="sel_id" value="{$id}" class="checkbox"></td>
+                      <td><a href="?type=edit&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}">{$topic}</a></td>
+                      <td>{$=ii_itake('sel_vote_type.{$type}', 'sel')}</td>
+                      <td>{$time}</td>
+                      <td align="center"><a href="?type=edit&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}"><img src="{$=#global_images_route}public/small/edit.gif" border="0"></a></td>
+                      <td align="center"><a href="?action=delete&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}" onclick="return click_return('{$=ii_itake('global.lng_admin.admin_confirm2','lng')}[{$topicstr}]')"><img src="{$=#global_images_route}public/small/delete.gif" border="0"></a></td>
+                    </tr>{@recurrence_ida}
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="25" align="right">{$cpagestr}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25" align="right">{$=ii_itake('global.lng_admin.admin_control','lng')} <select name="control" class="select">{$=mm_sel_control()}</select> <input type="submit" name="submit" value="{$=ii_itake('global.lng_config.control','lng')}" class="button" onclick="return click_return('{$=ii_itake('global.lng_admin.admin_confirm','lng')}')"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </form>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[add]]></name>
+      <tpl_default><![CDATA[{$=ii_ireplace('manage.js_vote_set_date', 'tpl')}
+<script language="javascript" src="{$=#global_images_route}js/calendar.js"></script>
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.nav_add','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form name="form" method="post" action="?action=add&backurl={$=urlencode($GLOBALS['nurl'])}">
+                  <input type="hidden" id="vote_date_option" name="vote_date_option" value="2">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('manage.topic','lng')}</td>
+                      <td width="*"><input type="text" name="topic" size="20"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.type','lng')}</td>
+                      <td>{$=ii_show_xmlinfo_select('sel_vote_type.all', 0, 'type:radio')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.starttime','lng')}</td>
+                      <td><input type="text" id="starttime" name="starttime" size="10" value="{$=ii_format_date(ii_now(), 1)}"> <input type="button" value="{$=ii_itake('global.lng_config.select', 'lng')}" onclick="Calendar.display('starttime', event)"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.endtime','lng')}</td>
+                      <td><input type="text" id="endtime" name="endtime" size="10"> <input type="button" value="{$=ii_itake('global.lng_config.select', 'lng')}" onclick="Calendar.display('endtime', event)"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.lock','lng')}</td>
+                      <td>{$=mm_sel_yesno('lock', 0)}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.count','lng')}</td>
+                      <td><input type="text" id="count" name="count" value="2" size="4" maxlength="3"> <input type="button" class="button" onclick="vote_set_date()" value="{$=ii_itake('global.lng_config.set', 'lng')}"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" id="vote_date">
+                      <table id="vote_date_option1" border="0" width="100%" cellSpacing="0" cellPadding="0">
+                        <tr>
+                          <td width="80" height="25">{$=ii_itake('manage.option','lng')}[1]</td>
+                          <td width="*"><input type="text" name="option1" size="20">, <input type="text" name="count1" value="0" size="3"></td>
+                        </tr>
+                      </table>
+                      <table id="vote_date_option2" border="0" width="100%" cellSpacing="0" cellPadding="0">
+                        <tr>
+                          <td width="80" height="25">{$=ii_itake('manage.option','lng')}[2]</td>
+                          <td width="*"><input type="text" name="option2" size="20">, <input type="text" name="count2" value="0" size="3"></td>
+                        </tr>
+                      </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="80" height="25"></td>
+                      <td width="*"><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[edit]]></name>
+      <tpl_default><![CDATA[{$=ii_ireplace('manage.js_vote_set_date', 'tpl')}
+<script language="javascript" src="{$=#global_images_route}js/calendar.js"></script>
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.edit','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form name="form" method="post" action="?action=edit&backurl={$=urlencode($GLOBALS['nurl'])}&id={$id}">
+                  <input type="hidden" id="vote_date_option" name="vote_date_option" value="{$count}">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('manage.topic','lng')}</td>
+                      <td width="*"><input type="text" name="topic" size="20" value="{$topic}"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.type','lng')}</td>
+                      <td>{$=ii_show_xmlinfo_select('sel_vote_type.all', {$type}, 'type:radio')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.starttime','lng')}</td>
+                      <td><input type="text" id="starttime" name="starttime" size="10" value="{$starttime}"> <input type="button" value="{$=ii_itake('global.lng_config.select', 'lng')}" onclick="Calendar.display('starttime', event)"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.endtime','lng')}</td>
+                      <td><input type="text" id="endtime" name="endtime" size="10" value="{$endtime}"> <input type="button" value="{$=ii_itake('global.lng_config.select', 'lng')}" onclick="Calendar.display('endtime', event)"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.lock','lng')}</td>
+                      <td>{$=mm_sel_yesno("lock", {$lock})}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.time','lng')}</td>
+                      <td><input type="text" name="time" size="20" value="{$time}"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.count','lng')}</td>
+                      <td><input type="text" id="count" name="count" size="4" maxlength="3" value="{$count}"> <input type="button" class="button" onclick="vote_set_date()" value="{$=ii_itake('global.lng_config.set', 'lng')}"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" id="vote_date">{@recurrence_ida}
+                      <table id="vote_date_option{$vid}" border="0" width="100%" cellSpacing="0" cellPadding="0">
+                        <tr>
+                          <td width="80" height="25">{$=ii_itake('manage.option','lng')}[{$vid}]</td>
+                          <td width="*"><input type="text" name="option{$vid}" value="{$topic}" size="20">, <input type="text" name="count{$vid}" value="{$count}" size="3"></td>
+                        </tr>
+                      </table>{@recurrence_ida}
+                      </td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="80" height="25"></td>
+                      <td width="*"><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.createjs','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%">{$=ii_itake('manage.jspath','lng')}(<a href="{$=ii_get_actual_route(ADMIN_FOLDER)}/files/manage.php?type=show_files&show_path=%2E%2E%2F%2E%2E%2F{$=#ngenre}%2F{$=urlencode($GLOBALS['njspath'])}">{$=#njspath}</a>)</td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form name="createjs" method="post" action="?action=createjs&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}"
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('manage.jsname','lng')}</td>
+                      <td width="*"><input type="text" name="jsname" size="20"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('manage.jstpl','lng')}</td>
+                      <td><select name="jstpl">{$=ii_show_xmlinfo_select("sel_vote_tpl.all","","select")}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="25"></td>
+                      <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[js_vote_set_date]]></name>
+      <tpl_default><![CDATA[<script type="text/javascript">
+function vote_set_date()
+{
+  var tobj, tvalue;
+  tobj = get_id("count");
+  tvalue = get_num(tobj.value);
+  if (tvalue < 0) tvalue = 0;
+  var tdobj, tdvalue;
+  tdobj = get_id("vote_date_option");
+  tdvalue = get_num(tdobj.value);
+  if (tdvalue < 0) tdvalue = 0;
+  if (tvalue && tdvalue)
+  {
+    var tnums = tvalue - tdvalue ;
+    if (tnums < 0)
+    {
+      for (i = tdvalue; i > tvalue; i--)
+      {
+        if (get_id("vote_date_option" + i))
+        {
+          get_id("vote_date_option" + i).style.display = "none";
+        }
+      }
+    }
+    else
+    {
+      var tobjdate, tobjstr, tstrvote;
+      tobjdate = get_id("vote_date");
+      tstrvote = "{$=ii_itake('manage.option','lng')}";
+      tobjstr = ""
+      for (i = tdvalue; i <= tvalue; i++)
+      {
+        if (get_id("vote_date_option" + i))
+        {
+          get_id("vote_date_option" + i).style.display = "";
+        }
+        else
+        {
+          tobjstr += "<table id=\"vote_date_option" + i + "\" border=\"0\" width=\"100%\" cellSpacing=\"0\" cellPadding=\"0\"><tr><td width=\"80\" height=\"25\">" + tstrvote + "[" + i + "]</td><td width=\"*\"><input type=\"text\" name=\"option" + i + "\" size=\"20\">, <input type=\"text\" name=\"count" + i + "\" value=\"0\" size=\"3\"></td></tr></table>"
+        }
+      }
+      tobjdate.innerHTML += tobjstr;
+    }
+    tdobj.value = tvalue;
+  }
+}
+</script>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

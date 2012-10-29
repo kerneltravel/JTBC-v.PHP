@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[table_html]]></name>
+      <tpl_default><![CDATA[
+<div style="WIDTH: 460px; HEIGHT: {$height}px; OVERFLOW: auto">
+<table border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor="#666666">{@}
+  <tr>{@@}
+    <td bgcolor="#ffffff" height="20">{$value}</td>{@@}
+  </tr>{@}
+</table>
+</div>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[form]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="*" align="center">
+    <table border="0" width="98%" cellSpacing="0" cellPadding="0" class="lrbtline">
+      <tr>
+        <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.title','lng')}</td>
+      </tr>
+      <tr>
+        <td width="100%" align="center">
+          <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+            <form name="form" method="post">
+            <tr>
+              <td width="100%" height="25">{$=ii_itake('manage.notice','lng')}</td>
+            </tr>
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+            <tr>
+              <td width="100%">{$=jtbc_cms_admin_manage_run()}</td>
+            </tr>
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+            <tr>
+              <td width="100%"><textarea rows="20" name="sqlstrs" cols="55">{$=ii_htmlencode($_POST['sqlstrs'], 1)}</textarea></td>
+            </tr>
+            <tr>
+              <td width="100%" height="25" class="red">{$=ii_itake('manage.noticeb','lng')}</td>
+            </tr>
+            <tr>
+              <td width="100%" height="25"><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+            </tr>
+            <tr>
+              <td width="100%" height="5"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

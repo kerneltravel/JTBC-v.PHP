@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[view]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<table width="96%" cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <table cellpadding="5" cellspacing="1" class="tablex" border="0">
+        <tr>
+          <td><strong>{$vtopic}</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">{@recurrence_ida}
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td height="20"><strong>{$topic}</strong></td>
+              </tr>
+            </table>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="40" rowspan="2" align="center"><font color="red">({$count})</font></td>
+                <td>{$per}%</td>
+              </tr>
+              <tr>
+                <td><hr size="5" color="#FF0000" width="{$per}%" align="left"></td>
+              </tr>
+            </table>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td height="10"></td>
+              </tr>
+            </table>{@recurrence_ida}
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+</table>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

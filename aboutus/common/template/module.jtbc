@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('module.channel_title','lng')}</h3>{$=vv_itransfer('new', '1', 'topx=50')}
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation('{$genre}', '')}{$=NAV_SP_STR}{$topic}</span></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+          <tr>
+            <td class="content"><div>{$=mm_encode_content(mm_cutepage_content($GLOBALS['RS_content'], 'cp_note={$cp_note};cp_mode={$cp_mode};cp_type={$cp_type};cp_num={$cp_num};cp_page={$page}'), '{$cttype}')}</div></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+          <tr>
+            <td><div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], 'cp_note={$cp_note};cp_mode={$cp_mode};cp_type={$cp_type};cp_num={$cp_num}', 'folder=' . $GLOBALS['ncreatefolder'] . ';filetype=' . $GLOBALS['ncreatefiletype'] . ';cutekey={$id};time={$time}')}</div></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+          <tr>
+            <td align="right">【<a href="javascript:window.print()">{$=ii_itake('global.lng_config.print','lng')}</a>】【<a href="javascript:self.close()">{$=ii_itake('global.lng_config.close','lng')}</a>】</td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<script type="text/javascript">igets('{$=ii_get_actual_route('expansion')}/count/?genre={$=urlencode($GLOBALS['ngenre'])}&id={$id}', nll);</script>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfgf" author="jetiben">
+  <configure>
+    <item varstr="morder" strvalue="support,expansion,passport,article,product,download,shop,shopcart,forum" />
+    <item varstr="norder" strvalue="cache,files,xml,sql,module,upload,configure,user,userlog" />
+  </configure>
+</xml>

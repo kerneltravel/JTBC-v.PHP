@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[navigation]]></name>
+      <tpl_default><![CDATA[
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="nav_list"><a href="?hspan=nav_list">{$=ii_itake('manage.nav_list','lng')}</a></span>&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="nav_hidden"><a href="?keyword=1&field=hidden&classid={$=ii_get_num($_GET['classid'], 0)}&hspan=nav_hidden">{$=ii_itake('manage.nav_hidden','lng')}</a></span>&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="nav_good"><a href="?keyword=1&field=good&classid={$=ii_get_num($_GET['classid'], 0)}&hspan=nav_good">{$=ii_itake('manage.nav_good','lng')}</a></span>&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="nav_add"><a href="?type=add&classid={$=ii_get_num($_GET['classid'], 0)}&hspan=nav_add">{$=ii_itake('manage.nav_add','lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">{$=mm_get_admin_sellng()}
+            <table border="0" width="100%" cellspacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_config.search','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <form method="get" name="search">
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<input type="text" name="keyword" size="10" value="{$=mm_get_admin_keyword()}"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<select name="field" class="select">{$=mm_get_admin_search()}</select></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25">&nbsp;<input type="submit" value="{$=ii_itake('global.lng_config.search','lng')}" class="button"></td>
+                    </tr>
+                    </form>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_sort_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<a href="{$=#nuri}">{$=ii_itake('global.lng_admin.admin_sort_all','lng')}</a>{$nav_sort}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%">{$nav_sort_child}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.nav_list','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form method="post" name="sel_form" action="?action=control&backurl={$=urlencode($GLOBALS['nurl'])}" onSubmit="get_sel_id()">
+                  <input type="hidden" name="sel_ids">
+                    <tr>
+                      <td height="25" width="30"><input type="checkbox" name="sel_all" class="checkbox" onClick="select_all()"></td>
+                      <td width="*">{$=ii_itake('config.topic','lng')}</td>
+                      <td width="100">{$=ii_itake('global.lng_config.sort','lng')}</td>
+                      <td width="120">{$=ii_itake('global.lng_config.time','lng')}</td>
+                      <td align="center" width="50">{$=ii_itake('global.lng_config.edit','lng')}</td>
+                      <td align="center" width="50">{$=ii_itake('global.lng_config.delete','lng')}</td>
+                    </tr>{@recurrence_ida}
+                    <tr>
+                      <td height="25"><input type="checkbox" name="sel_id" value="{$id}" class="checkbox"></td>
+                      <td><a href="?type=edit&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}">{$topic}</a></td>
+                      <td><a href="?classid={$classid}">{$sort}</a></td>
+                      <td>{$time}</td>
+                      <td align="center"><a href="?type=edit&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}"><img src="{$=#global_images_route}public/small/edit.gif" border="0"></a></td>
+                      <td align="center"><a href="?action=delete&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}" onclick="return click_return('{$=ii_itake('global.lng_admin.admin_confirm2','lng')}[{$topicstr}]')"><img src="{$=#global_images_route}public/small/delete.gif" border="0"></a></td>
+                    </tr>{@recurrence_ida}
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="25" align="right">{$cpagestr}</td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="25" align="right">{$=ii_itake('global.lng_admin.admin_control','lng')} <select name="control" class="select">{$=mm_sel_control()}</select> <input type="submit" name="submit" value="{$=ii_itake('global.lng_config.control','lng')}" class="button" onclick="return click_return('{$=ii_itake('global.lng_admin.admin_confirm','lng')}')"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </form>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[add]]></name>
+      <tpl_default><![CDATA[{$=ii_ireplace('manage.js_urls_set_date', 'tpl')}
+<script language="javascript" src="{$=#global_images_route}js/preview_images.js"></script>
+<script language="javascript" src="{$=#global_images_route}js/loader.js"></script>
+<script language="javascript">
+function bfsubmit()
+{
+  get_id("content_images_list").value = get_selects_list(get_id('content_images'));
+}
+
+function change_bsize(strt, strvalue)
+{
+  var tvalue = get_num(strvalue)
+  var tbvalue, tkbvalue, tmbvalue
+  switch (strt)
+  {
+    case "b":
+      tbvalue = tvalue;
+      tkbvalue = tvalue / 1024;
+      tmbvalue = tvalue / (1024*1024);
+      break;
+    case "kb":
+      tbvalue = tvalue * 1024;
+      tkbvalue = tvalue;
+      tmbvalue = tvalue / 1024;
+      break;
+    case "mb":
+      tbvalue = tvalue * 1024 * 1024;
+      tkbvalue = tvalue * 1024;
+      tmbvalue = tvalue;
+      break;
+    default :
+  }
+  get_id("size").value = tbvalue;
+  get_id("kbsize").value = tkbvalue;
+  get_id("mbsize").value = tmbvalue;
+}
+</script>
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.nav_add','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form name="form" method="post" action="?action=add&backurl={$=urlencode($GLOBALS['nurl'])}" onsubmit="bfsubmit()">
+                  <input type="hidden" id="urls_date_option" name="urls_date_option" value="2">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('config.topic','lng')}</td>
+                      <td width="*"><input type="text" name="topic" size="40"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.sort','lng')}</td>
+                      <td><select name="sort" class="select">{$=mm_sel_sort($GLOBALS['ngenre'],$GLOBALS['slng'],ii_get_num($_GET['classid'], 0))}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="25" valign="top">{$=ii_itake('config.scont','lng')}</td>
+                      <td><textarea rows="3" name="scont" cols="40"></textarea></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.image','lng')}</td>
+                      <td><input type="text" id="image" name="image" size="40" ondblclick="preview_images(this.value, event)"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.upload','lng')}</td>
+                      <td><iframe src="?type=upload&upform=form&uptext=image&upfname={$=#nuppath}noimg.gif" width="100%" height="25" scrolling="no" marginwidth="0" marginheight="0" align="middle" name="upload" frameborder="0"></iframe></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.mode','lng')}</td>
+                      <td>{$=mm_get_html_content()}</td>
+                    </tr>
+                    <tr>
+                      <td height="25" valign="top">{$=ii_itake('config.content','lng')}</td>
+                      <td>{$=mm_html_content('content','','')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.images','lng')}</td>
+                      <td><input type="hidden" name="content_images_list" id="content_images_list"><select name="content_images" id="content_images" class="select" onkeydown="selects.displace(this, this.selectedIndex, event.keyCode)"></select> <input type="button" class="button" value="{$=ii_itake('global.lng_config.preview','lng')}" onclick="preview_images(get_id('content_images').value, event)"> <input type="button" class="button" value="{$=ii_itake('global.lng_config.delete','lng')}" onclick="selects.remove(get_id('content_images'))"> <input type="button" class="button" value="{$=ii_itake('global.lng_config.insert','lng')}" onclick="insert_images('content', get_id('content_images').value, {$=#ncttype}, -1, '{$=ii_get_lrstr($GLOBALS['nuri'], "/", "leftr")}')"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.upload','lng')}</td>
+                      <td><iframe src="?type=upload&upform=form&uptext=content_images&upftype=1" width="100%" height="25" scrolling="no" marginwidth="0" marginheight="0" align="middle" name="upload" frameborder="0"></iframe></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.size','lng')}</td>
+                      <td><input type="text" name="size" id="size" size="10" onkeyup="change_bsize('b', this.value)"> <b>B</b> <input type="text" name="kbsize" id="kbsize" size="7" onkeyup="change_bsize('kb', this.value)"> <b>KB</b> <input type="text" name="mbsize" id="mbsize" size="5" onkeyup="change_bsize('mb', this.value)" maxlength="6"> <b>MB</b></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.runco','lng')}</td>
+                      <td>{$=ii_show_xmlinfo_select('sel_runco.all', '', 'runco[]:checkbox')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.star','lng')}</td>
+                      <td>{$=ii_show_xmlinfo_select('sel_star.all', '3', 'star:radio')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.accredit','lng')}</td>
+                      <td><select name="accredit" class="select">{$=ii_show_xmlinfo_select('sel_accredit.all', '', 'select')}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.lng','lng')}</td>
+                      <td><select name="lng" class="select">{$=ii_show_xmlinfo_select('sel_lng.all', '', 'select')}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.link','lng')}</td>
+                      <td><input type="text" name="link" size="40"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.author','lng')}</td>
+                      <td><input type="text" name="author" size="20"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td height="10"></td>
+                    </tr>
+                    <tr>
+                      <td height="1" background="{$=#global_images_route}public/small/line.gif"></td>
+                    </tr>
+                    <tr>
+                      <td height="10"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('config.urls_count','lng')}</td>
+                      <td width="*"><input type="text" id="count" name="count" value="2" size="4" maxlength="3"> <input type="button" class="button" onclick="urls_set_date()" value="{$=ii_itake('global.lng_config.set', 'lng')}"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" id="urls_date">
+                      <table id="urls_date_option1" border="0" width="100%" cellSpacing="0" cellPadding="0">
+                        <tr>
+                          <td width="80" height="25">{$=ii_itake('config.urls_topic','lng')}[1]</td>
+                          <td width="*"><input type="text" name="urls_topic1" size="20"></td>
+                        </tr>
+                        <tr>
+                          <td height="25">{$=ii_itake('config.urls_link','lng')}[1]</td>
+                          <td><input type="text" name="urls_link1" size="40"></td>
+                        </tr>
+                      </table>
+                      <table id="urls_date_option2" border="0" width="100%" cellSpacing="0" cellPadding="0">
+                        <tr>
+                          <td width="80" height="25">{$=ii_itake('config.urls_topic','lng')}[2]</td>
+                          <td width="*"><input type="text" name="urls_topic2" size="20"></td>
+                        </tr>
+                        <tr>
+                          <td height="25">{$=ii_itake('config.urls_link','lng')}[2]</td>
+                          <td><input type="text" name="urls_link2" size="40"></td>
+                        </tr>
+                      </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('global.lng_config.hidden','lng')}</td>
+                      <td width="*">{$=mm_sel_yesno('hidden', 0)}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.good','lng')}</td>
+                      <td>{$=mm_sel_yesno('good', 0)}</td>
+                    </tr>
+                    <tr>
+                      <td height="25"></td>
+                      <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[edit]]></name>
+      <tpl_default><![CDATA[{$=ii_ireplace('manage.js_urls_set_date', 'tpl')}
+<script language="javascript" src="{$=#global_images_route}js/preview_images.js"></script>
+<script language="javascript" src="{$=#global_images_route}js/loader.js"></script>
+<script language="javascript">
+function bfsubmit()
+{
+  get_id("content_images_list").value = get_selects_list(get_id('content_images'));
+}
+</script>
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellspacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_admin.admin_nav','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>{$=pp_manage_navigation()}
+                </td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellspacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellpadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.edit','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form name="form" method="post" action="?action=edit&id={$id}&backurl={$=urlencode($GLOBALS['nurl'])}" onsubmit="bfsubmit()">
+                  <input type="hidden" id="urls_date_option" name="urls_date_option" value="{$ulop_count}">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('config.topic','lng')}</td>
+                      <td width="*"><input type="text" name="topic" size="40" value="{$topic}"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.sort','lng')}</td>
+                      <td><select name="sort" class="select">{$=mm_sel_sort($GLOBALS['ngenre'],$GLOBALS['slng'],{$class})}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="25" valign="top">{$=ii_itake('config.scont','lng')}</td>
+                      <td><textarea rows="3" name="scont" cols="40">{$scont}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.image','lng')}</td>
+                      <td><input type="text" id="image" name="image" size="40" value="{$image}" ondblclick="preview_images(this.value, event)"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.upload','lng')}</td>
+                      <td><iframe src="?type=upload&upform=form&uptext=image" width="100%" height="25" scrolling="no" marginwidth="0" marginheight="0" align="middle" name="upload" frameborder="0"></iframe></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.mode','lng')}</td>
+                      <td>{$=mm_get_html_content()}</td>
+                    </tr>
+                    <tr>
+                      <td height="25" valign="top">{$=ii_itake('config.content','lng')}</td>
+                      <td>{$=mm_html_content('content',ii_htmlencode($GLOBALS['RS_content']),{$cttype})}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.images','lng')}</td>
+                      <td><input type="hidden" name="content_images_list" id="content_images_list"><select name="content_images" id="content_images" class="select" onkeydown="selects.displace(this, this.selectedIndex, event.keyCode)">{$=mm_get_images_list('{$content_images_list}')}</select> <input type="button" class="button" value="{$=ii_itake('global.lng_config.preview','lng')}" onclick="preview_images(get_id('content_images').value, event)"> <input type="button" class="button" value="{$=ii_itake('global.lng_config.delete','lng')}" onclick="selects.remove(get_id('content_images'))"> <input type="button" class="button" value="{$=ii_itake('global.lng_config.insert','lng')}" onclick="insert_images('content', get_id('content_images').value, {$=#ncttype}, {$cttype}, '{$=ii_get_lrstr($GLOBALS['nuri'], "/", "leftr")}')"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.upload','lng')}</td>
+                      <td><iframe src="?type=upload&upform=form&uptext=content_images&upftype=1" width="100%" height="25" scrolling="no" marginwidth="0" marginheight="0" align="middle" name="upload" frameborder="0"></iframe></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.size','lng')}</td>
+                      <td><input type="text" name="size" size="10" value="{$size}"> <b>B</b></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.runco','lng')}</td>
+                      <td>{$=ii_show_xmlinfo_select('sel_runco.all', '{$runco}', 'runco[]:checkbox')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.star','lng')}</td>
+                      <td>{$=ii_show_xmlinfo_select('sel_star.all', '{$star}', 'star:radio')}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.accredit','lng')}</td>
+                      <td><select name="accredit" class="select">{$=ii_show_xmlinfo_select('sel_accredit.all', '{$accredit}', 'select')}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.lng','lng')}</td>
+                      <td><select name="lng" class="select">{$=ii_show_xmlinfo_select('sel_lng.all', '{$lng}', 'select')}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.link','lng')}</td>
+                      <td><input type="text" name="link" size="40" value="{$link}"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('config.author','lng')}</td>
+                      <td><input type="text" name="author" size="20" value="{$author}"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td height="10"></td>
+                    </tr>
+                    <tr>
+                      <td height="1" background="{$=#global_images_route}public/small/line.gif"></td>
+                    </tr>
+                    <tr>
+                      <td height="10"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('config.urls_count','lng')}</td>
+                      <td width="*"><input type="text" id="count" name="count" value="{$ulop_count}" size="4" maxlength="3"> <input type="button" class="button" onclick="urls_set_date()" value="{$=ii_itake('global.lng_config.set', 'lng')}"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" id="urls_date">{@recurrence_ida}
+                      <table id="urls_date_option{$ulop_i}" border="0" width="100%" cellSpacing="0" cellPadding="0">
+                        <tr>
+                          <td width="80" height="25">{$=ii_itake('config.urls_topic','lng')}[{$ulop_i}]</td>
+                          <td width="*"><input type="text" name="urls_topic{$ulop_i}" size="20" value="{$urls_topic}"></td>
+                        </tr>
+                        <tr>
+                          <td height="25">{$=ii_itake('config.urls_link','lng')}[{$ulop_i}]</td>
+                          <td><input type="text" name="urls_link{$ulop_i}" size="40" value="{$urls_link}"></td>
+                        </tr>
+                      </table>{@recurrence_ida}
+                      </td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('global.lng_config.hidden','lng')}</td>
+                      <td width="*">{$=mm_sel_yesno('hidden', {$hidden})}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.good','lng')}</td>
+                      <td>{$=mm_sel_yesno('good', {$good})}</td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.time','lng')}</td>
+                      <td><input type="text" name="time" size="20" value="{$time}"></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.count','lng')}</td>
+                      <td><input type="text" name="count" size="20" value="{$count}"></td>
+                    </tr>
+                    <tr>
+                      <td height="25"></td>
+                      <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[batch_menu]]></name>
+      <tpl_default><![CDATA[
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="batch_shift"><a href="?type=displace&mtype=batch_shift&hspan=batch_shift" target="_self">{$=ii_itake('manage.batch_shift', 'lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="20">&nbsp;<img src="{$=#global_images_route}public/small/sico.gif" border="0">&nbsp;<span id="batch_delete"><a href="?type=displace&mtype=batch_delete&hspan=batch_delete" target="_self">{$=ii_itake('manage.batch_delete', 'lng')}</a></span></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[batch_shift]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">{$=mm_get_admin_sellng()}
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_config.control','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">{$=pp_manage_batch_menu()}</td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.batch_shift','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form name="form" method="post" action="?action=batch_shift&backurl={$=urlencode($GLOBALS['nurl'])}">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('global.lng_config.sort','lng')}</td>
+                      <td width="*"><select name="sort1" class="select">{$=mm_sel_sort($GLOBALS['ngenre'],$GLOBALS['slng'],0)}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="5"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td height="25"></td>
+                      <td><input type="checkbox" name="child" value="1" checked="checked" class="checkbox">{$=ii_itake('manage.batch_child_sort','lng')}</td>
+                    </tr>
+                    <tr>
+                      <td height="5"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td height="25">{$=ii_itake('global.lng_config.sort','lng')}</td>
+                      <td><select name="sort2" class="select">{$=mm_sel_sort($GLOBALS['ngenre'],$GLOBALS['slng'],0)}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="5"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td height="25"></td>
+                      <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button" onclick="return click_return('{$=ii_itake('global.lng_common.sure', 'lng')}')">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[batch_delete]]></name>
+      <tpl_default><![CDATA[
+<table border="0" width="100%" cellSpacing="0" cellPadding="0">
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center">
+      <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+        <tr>
+          <td width="120" align="center" valign="top">{$=mm_get_admin_sellng()}
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0">
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </table>
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('global.lng_config.control','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">{$=pp_manage_batch_menu()}</td>
+              </tr>
+            </table>
+          </td>
+          <td width="5"></td>
+          <td width="*" align="center" valign="top">
+            <table border="0" width="100%" cellSpacing="0" cellPadding="0" class="lrbtline">
+              <tr>
+                <td width="100%" height="25" class="tbtop">{$=ii_itake('manage.batch_delete','lng')}</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                  <form name="form" method="post" action="?action=batch_delete&backurl={$=urlencode($GLOBALS['nurl'])}">
+                    <tr>
+                      <td width="80" height="25">{$=ii_itake('global.lng_config.sort','lng')}</td>
+                      <td width="*"><select name="sort1" class="select"><option value="-1">{$=ii_itake('global.lng_config.all', 'lng')}</option>{$=mm_sel_sort($GLOBALS['ngenre'],$GLOBALS['slng'],0)}</select></td>
+                    </tr>
+                    <tr>
+                      <td height="5"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td height="25"></td>
+                      <td><input type="checkbox" name="child" value="1" checked="checked" class="checkbox">{$=ii_itake('manage.batch_child_sort','lng')}</td>
+                    </tr>
+                    <tr>
+                      <td height="5"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td height="25"></td>
+                      <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button" onclick="return click_return('{$=ii_itake('global.lng_common.sure', 'lng')}')">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+                    </tr>
+                  </form>
+                  </table>
+                  <table border="0" width="98%" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td width="100%" height="5"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"></td>
+  </tr>
+</table>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[js_urls_set_date]]></name>
+      <tpl_default><![CDATA[<script type="text/javascript">
+function urls_set_date()
+{
+  var tobj, tvalue;
+  tobj = get_id("count");
+  tvalue = get_num(tobj.value);
+  if (tvalue < 0) tvalue = 0;
+  var tdobj, tdvalue;
+  tdobj = get_id("urls_date_option");
+  tdvalue = get_num(tdobj.value);
+  if (tdvalue < 0) tdvalue = 0;
+  if (tvalue && tdvalue)
+  {
+    var tnums = tvalue - tdvalue ;
+    if (tnums < 0)
+    {
+      for (i = tdvalue; i > tvalue; i--)
+      {
+        if (get_id("urls_date_option" + i))
+        {
+          get_id("urls_date_option" + i).style.display = "none";
+        }
+      }
+    }
+    else
+    {
+      var tobjdate, tobjstr;
+      tobjdate = get_id("urls_date");
+      tobjstr = ""
+      for (i = tdvalue; i <= tvalue; i++)
+      {
+        if (get_id("urls_date_option" + i))
+        {
+          get_id("urls_date_option" + i).style.display = "";
+        }
+        else
+        {
+          tobjstr += "<table id=\"urls_date_option" + i + "\" border=\"0\" width=\"100%\" cellSpacing=\"0\" cellPadding=\"0\"><tr><td width=\"80\" height=\"25\">{$=ii_itake('config.urls_topic', 'lng')}[" + i + "]</td><td width=\"*\"><input type=\"text\" name=\"urls_topic" + i + "\" size=\"20\"></td></tr><tr><td height=\"25\">{$=ii_itake('config.urls_link', 'lng')}[" + i + "]</td><td width=\"*\"><input type=\"text\" name=\"urls_link" + i + "\" size=\"40\"></td></tr></table>"
+        }
+      }
+      tobjdate.innerHTML += tobjstr;
+    }
+    tdobj.value = tvalue;
+  }
+}
+</script>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

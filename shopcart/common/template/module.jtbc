@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<script type="text/javascript" src="{$=#global_images_route}js/validator.js"></script>
+<script type="text/javascript">
+function cklimitnum(strid, strnum, strnmax)
+{
+  var tstrnum = get_num(strnum);
+  var tstrnmax = get_num(strnmax);
+  if (tstrnmax != -1)
+  {
+    if (tstrnum > tstrnmax)
+    {
+      if (tstrnmax != 0) alert('{$=ii_itake('module.limitnumerror', 'lng')}');
+      get_id(strid).value = tstrnmax;
+    };
+  };
+};
+</script>
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('global.' . $GLOBALS['nshop'] . ':module.class', 'lng')}</h3>{$=vv_isort($GLOBALS['ngenre'], 'tpl=sort;genre=' . $GLOBALS['nshop'])}
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table cellpadding="0" cellspacing="0" class="tablen">
+          <tr>
+            <td class="nav"><span>{$=vv_inavigation($GLOBALS['ngenre'], 'strers=module;strurl=' . $GLOBALS['ngenre'])}</span></td>
+          </tr>
+          <tr>
+            <td class="list" valign="top">
+            <form name="sel_form" method="post" action="{$=#nuri}?action=edit" onsubmit="get_sel_id();">
+            <input type="hidden" name="sel_ids" />
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="30" height="25"><input type="checkbox" name="sel_all" class="checkbox" onclick="select_all()" /></td>
+                <td>{$=ii_itake('global.' . $GLOBALS['nshop'] . ':config.topic','lng')}</td>
+                <td width="100" align="center">{$=ii_itake('config.num','lng')}</td>
+                <td width="100" align="center">{$=ii_itake('global.' . $GLOBALS['nshop'] . ':config.price','lng')}({$=ii_itake('global.lng_unit.money','lng')})</td>
+                <td width="100" align="center">{$=ii_itake('global.' . $GLOBALS['nshop'] . ':config.wprice','lng')}({$=ii_itake('global.lng_unit.money','lng')})</td>
+              </tr>{@recurrence_ida}
+              <tr>
+                <td height="25"><input type="checkbox" name="sel_id" value="{$id}" class="checkbox" checked="checked" /></td>
+                <td align="left"><a href="{$=ii_get_actual_route($GLOBALS['nshop'])}/?type=detail&id={$id}" target="_blank">{$topic}</a></td>
+                <td align="center"><input type="text" id="num_{$id}" name="num_{$id}" value="{$num}" size="3" class="text" maxlength="6" onkeyup="cklimitnum(this.id, this.value, {$limitnum})" /></td>
+                <td align="center">{$price}</td>
+                <td align="center" class="green">{$wprice}</td>
+              </tr>{@recurrence_ida}
+            </table>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td height="25" class="red">{$=ii_itake('module.merchandiseprice','lng')} {$merchandiseprice}({$=ii_itake('global.lng_unit.money','lng')})</td>
+              </tr>
+              <tr>
+                <td height="25"><input type="submit" value="{$=ii_itake('module.submit','lng')}" class="button" /> <input type="button" value="{$=ii_itake('module.continue','lng')}" class="button" onclick="location.href='{$continue}'" /> <input type="button" value="{$=ii_itake('module.clear','lng')}" class="button" onclick="location.href='?action=delete'" /> <input type="button" value="{$=ii_itake('module.pay','lng')}" class="button" onclick="switch_display('buying')" /></td>
+              </tr>
+              <tr>
+                <td height="25"></td>
+              </tr>
+            </table>
+            </form>
+            <form name="buy_form" method="post" action="{$=#nuri}?action=buy" onSubmit="return Validator.Validate(this, 2)">
+            <input type="hidden" name="merchandiseprice" value="{$merchandiseprice}" />
+            <table cellspacing="0" cellpadding="0" class="tablem" id="buying" style="DISPLAY: none">
+              <tr>
+                <td width="100" height="25">{$=ii_itake('config.name','lng')}</td>
+                <td><input type="text" name="name" size="15" class="text" maxlength="50" dtype="Require" dmsg="{$=ii_itake('module.val_name', 'lng')}" value="{$=ii_htmlencode($_POST['name'], 1)}" /></td>
+              </tr>
+              <tr>
+                <td height="25">{$=ii_itake('config.address','lng')}</td>
+                <td><input type="text" name="address" size="30" class="text" maxlength="50" dtype="Require" dmsg="{$=ii_itake('module.val_address', 'lng')}" value="{$=ii_htmlencode($_POST['address'], 1)}" /></td>
+              </tr>
+              <tr>
+                <td height="25">{$=ii_itake('config.code','lng')}</td>
+                <td><input type="text" name="code" size="15" class="text" maxlength="50" dtype="Require" dmsg="{$=ii_itake('module.val_code', 'lng')}" value="{$=ii_htmlencode($_POST['code'], 1)}" /></td>
+              </tr>
+              <tr>
+                <td height="25">{$=ii_itake('config.phone','lng')}</td>
+                <td><input type="text" name="phone" size="15" class="text" maxlength="50" dtype="Require" dmsg="{$=ii_itake('module.val_phone', 'lng')}" value="{$=ii_htmlencode($_POST['phone'], 1)}" /></td>
+              </tr>
+              <tr>
+                <td height="25">{$=ii_itake('config.email','lng')}</td>
+                <td><input type="text" name="email" size="15" class="text" maxlength="50" value="{$=ii_htmlencode($_POST['email'], 1)}" /></td>
+              </tr>
+              <tr>
+                <td height="25">{$=ii_itake('config.remark','lng')}</td>
+                <td><textarea name="remark" cols="60" rows="5" class="textarea">{$=ii_htmlencode($_POST['remark'], 1)}</textarea></td>
+              </tr>
+              <tr>
+                <td height="25">{$=ii_itake('config.traffic','lng')}</td>
+                <td><select name="traffic" class="select">{$=ii_show_xmlinfo_select('sel_traffic.all', ii_get_num($_POST['traffic'], 0), 'select')}</select></td>
+              </tr>
+              <tr>
+                <td height="25">{$=ii_itake('config.payment','lng')}</td>
+                <td><select name="payment" class="select">{$=ii_show_xmlinfo_select('sel_payment.all', ii_get_num($_POST['payment'], 0), 'select')}</select></td>
+              </tr>
+              <tr>
+                <td height="35"></td>
+                <td><input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button" />&nbsp;<input type="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button" /></td>
+              </tr>
+            </table>
+            </form>
+            </td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[succeed]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <table width="90%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="100" align="center"><img src="{$=#images_route}ok.gif" border="0" /></td>
+        <td height="200" align="center">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td height="25">{$=ii_itake('module.paysucceed', 'lng')}</td>
+            </tr>
+            <tr>
+              <td height="25" class="red">{$=ii_itake('module.orderid', 'lng')}({$orderid})</td>
+            </tr>
+            <tr>
+              <td height="25"><a href="./?type=list">{$=ii_itake('module.back', 'lng')}</a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

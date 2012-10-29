@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[mgtitle]]></disinfo>
+      <chinese><![CDATA[JS调用]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[nav_list]]></disinfo>
+      <chinese><![CDATA[全部JS调用列表]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[nav_add]]></disinfo>
+      <chinese><![CDATA[添加一个新的JS调用]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[edit]]></disinfo>
+      <chinese><![CDATA[编辑JS调用属性]]></chinese>
+    </item>
+  </language_list>
+</xml>

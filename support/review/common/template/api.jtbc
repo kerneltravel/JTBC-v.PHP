@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[input_form]]></name>
+      <tpl_default><![CDATA[<table cellpadding="0" cellspacing="0" class="tablen">
+  <tr>
+    <td height="25"><img src="{$=#global_images_route}public/small/sico.gif" border="0" /> <a href="{$=ii_get_actual_route(AP_SUPPORT_REVIEW_GENRE)}/?type=list&amp;keyword={$keyword}&amp;fid={$fid}" target="_blank">{$=ii_itake('global.' . AP_SUPPORT_REVIEW_GENRE . ':api.view', 'lng')}</a></td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+</table>
+<form name="form" method="post" action="{$=ii_get_actual_route(AP_SUPPORT_REVIEW_GENRE)}/index.php?action=add&keyword={$keyword}&fid={$fid}&backurl={$=urlencode($GLOBALS['nurl'])}">
+<table cellpadding="0" cellspacing="0" class="tablen">
+  <tr>
+    <td width="80" height="25">{$=ii_itake('global.' . AP_SUPPORT_REVIEW_GENRE . ':config.content', 'lng')}</td>
+    <td><textarea rows="5" name="content" cols="75" class="textarea"></textarea></td>
+  </tr>
+  <tr>
+    <td height="35"></td>
+    <td><input type="submit" name="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button">&nbsp;<input type="reset" name="reset" value="{$=ii_itake('global.lng_config.reset','lng')}" class="button"></td>
+  </tr>
+</table>
+</form>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[output_note]]></name>
+      <tpl_default><![CDATA[<table cellpadding="0" cellspacing="0" class="tablen">{@recurrence_ida}
+  <tr>
+    <td height="25"><img src="{$=#global_images_route}public/small/sico.gif" border="0" class="absmiddle" /> <strong>{$author}</strong></td>
+  </tr>
+  <tr>
+    <td height="5"></td>
+  </tr>
+  <tr>
+    <td>{$content}</td>
+  </tr>
+  <tr>
+    <td height="5"></td>
+  </tr>
+  <tr>
+    <td height="25" align="right">{$time} <span class="ash">[{$=ii_format_ip(ii_htmlencode($GLOBALS['RS_authorip']), 2)}]</span></td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>{@recurrence_ida}
+</table>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

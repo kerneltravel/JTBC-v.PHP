@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbcfg" author="jetiben">
+  <configure>
+    <item varstr="npagesize" strvalue="20" />
+    <item varstr="nhead" strvalue="chead" />
+    <item varstr="nfoot" strvalue="cfoot" />
+    <item varstr="ndatabase" strvalue="jtbc_support_vote" />
+    <item varstr="nidfield" strvalue="vid" />
+    <item varstr="nfpre" strvalue="v_" />
+    <item varstr="ndatabase_data" strvalue="jtbc_support_vote_data" />
+    <item varstr="nidfield_data" strvalue="vdid" />
+    <item varstr="nfpre_data" strvalue="vd_" />
+    <item varstr="ndatabase_voter" strvalue="jtbc_support_vote_voter" />
+    <item varstr="nidfield_voter" strvalue="vuid" />
+    <item varstr="nfpre_voter" strvalue="vu_" />
+    <item varstr="nuninstall" strvalue="1|0|0" />
+  </configure>
+</xml>

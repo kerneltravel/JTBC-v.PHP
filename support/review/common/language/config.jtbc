@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[df_username]]></disinfo>
+      <chinese><![CDATA[*游客*]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[author]]></disinfo>
+      <chinese><![CDATA[作者]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[authorip]]></disinfo>
+      <chinese><![CDATA[作者IP]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[content]]></disinfo>
+      <chinese><![CDATA[评论内容]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[time]]></disinfo>
+      <chinese><![CDATA[评论时间]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[keyword]]></disinfo>
+      <chinese><![CDATA[关键字]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[fid]]></disinfo>
+      <chinese><![CDATA[父ID]]></chinese>
+    </item>
+  </language_list>
+</xml>

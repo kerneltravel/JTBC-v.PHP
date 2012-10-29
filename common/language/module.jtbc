@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[channel_title]]></disinfo>
+      <chinese><![CDATA[首页]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[web_title]]></disinfo>
+      <chinese><![CDATA[JTBC(1.0)]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[keywords]]></disinfo>
+      <chinese><![CDATA[JTBC,CMS]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[description]]></disinfo>
+      <chinese><![CDATA[JTBC网站内容管理系统]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[set_homepage]]></disinfo>
+      <chinese><![CDATA[设为首页]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[add_favorite]]></disinfo>
+      <chinese><![CDATA[加入收藏]]></chinese>
+    </item>
+  </language_list>
+</xml>

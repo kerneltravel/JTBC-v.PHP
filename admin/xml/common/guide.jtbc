@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <disinfo><![CDATA[{$folder}:{$path}/manage.php?type=template&xml=.tpl.module]]></disinfo>
+      <chinese><![CDATA[模板管理]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[{$folder}:{$path}/manage.php?type=language&xml=.lng.module]]></disinfo>
+      <chinese><![CDATA[语言管理]]></chinese>
+    </item>
+  </item_list>
+</xml>

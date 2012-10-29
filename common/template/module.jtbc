@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="jtbc" author="jetiben">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="middle">
+  <div id="middleContent">
+    <div class="middleSide">
+      <div class="box1">
+        <h3>{$=ii_itake('global.passport:api.userlogin', 'lng')}</h3>
+        <div class="box1s">{$=ii_ireplace('global.passport:api.jslogin', 'tpl')}</div>
+      </div>
+    </div>
+    <div class="middleMain">
+      <div class="middleMainContent">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td width="50%" valign="top">
+              <div class="box2">
+                <h3>{$=ii_itake('global.lng_menu.article', 'lng')}</h3>{$=vv_itransfer('top', '1', 'topx=10;tnum=30;genre=article')}
+              </div>
+            </td>
+            <td width="50%" valign="top">
+              <div class="box2">
+                <h3>{$=ii_itake('global.lng_menu.product', 'lng')}</h3>{$=vv_itransfer('top', '1', 'topx=10;tnum=30;genre=product')}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              <div class="box2">
+                <h3>{$=ii_itake('global.lng_menu.download', 'lng')}</h3>{$=vv_itransfer('top', '1', 'topx=10;tnum=30;genre=download')}
+              </div>
+            </td>
+            <td valign="top">
+              <div class="box2">
+                <h3>{$=ii_itake('global.lng_menu.shop', 'lng')}</h3>{$=vv_itransfer('top', '1', 'topx=10;tnum=30;genre=shop')}
+              </div>
+            </td>
+          </tr>
+        </table>
+        <form method="get" name="search" action="search">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td width="10" height="10"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td height="25"><strong>{$=ii_itake('global.lng_config.search', 'lng')}</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td height="35">{$=ii_itake('global.lng_config.keyword', 'lng')} <input type="text" name="keyword" size="15" class="text" /> <select name="genre" class="select">{$=mm_sel_genre($GLOBALS['variable']['search.nsearch_genre'], '')}</select> <select name="field" class="select">{$=ii_show_xmlinfo_select('global.search:sel_field.all', '', 'select')}</select> <input type="submit" value="{$=ii_itake('global.lng_config.search','lng')}" class="button" /></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+            <td></td>
+          </tr>
+        </table>
+        </form>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>
